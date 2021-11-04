@@ -419,7 +419,7 @@ void readMoisture (uint16_t& _moisture)
 - if you set it to node you have to set it EUI. and set your function that get call when waiting for master polling.
 
 > P2Ppolling.setPolling_interval(...);
-- for master you have to set polling interval. see [Polling interval](#Calculate_polling_interval) how to calculate that so you not exceed 1% duty cycle.
+- for master you have to set polling interval. see [Polling interval](#calculate_polling_interval) how to calculate that so you not exceed 1% duty cycle.
 
 > P2Ppolling.setExled(...);
 - for node you can set Exled that will just toggle when it about to send data. i use it for debug. don't set it if you not using it.
