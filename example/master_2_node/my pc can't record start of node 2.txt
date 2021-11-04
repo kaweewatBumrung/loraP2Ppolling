@@ -1,0 +1,3 @@
+my pc can't record start of node 2
+it take too long for serial to be available
+but it did work
