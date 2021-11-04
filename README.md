@@ -430,6 +430,10 @@ you can name it what you like **BUT** you must keep function return type (void) 
 - for node this is the function that you set to get it call when waiting for master polling.
 you can name it what you like **BUT** you must keep function return type (void) and type of it parameter.
 
+**What if you can't find unique 64 bits number to use as EUI**
+
+than you should find another source of unique number like your microcontroller unique id. or make it as random as you can and go from there. don't forgot to set the same EUI for node and master (to accept)
+
 #### Calculate polling interval
 
 You have to make duty cycle of transmit to be within 1% for master because master will have to transmit more often than node. can be calculate by the number of node you need and number of frame master have to send for all the node and time on air (duration to transmit frame). that mean your interval have to be **at least (99 * total time on air for all transmit frame)** also each spreading factor (SF) will reduce or increase your time on air and polling interval. time no air are in table for difference SF. the polling frame and ACK from master are 4 bytes. and fix bandwidth at 125kHz coding rate of 4/8 and 8 symbol. i'm **not include joining or netAddr negotiate** partly because it will be small part in normal operation (or only at the start if you system not change). but you should keep that in mind as well.
