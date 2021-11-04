@@ -14,7 +14,7 @@ and  keep in mind that you should check from difference source for what the rule
 
 ### How it work in detail
 
-[system_image](/README_assets/polling_crop.png)
+![system_image](/README_assets/polling_crop.png)
 
 The core function that we want are to polling data from each node into to master. here node mean end device and you can think of master as a kind of a gateway to the internet or user. master and node using lora P2P as a communicate link. polling here simple mean you keep asking each node about it sensor data. and we just send that data using lora P2P. but lora frame is just broadcast into air like a normal wireless does. so here in this system i design number of thing.
 - Frame format and header to know who send, who receive, and what kind of frame is it. 
@@ -29,7 +29,7 @@ The core function that we want are to polling data from each node into to master
 #### Frame format
 To send some data with lora we call that data payload. that can only be compose of number of full bytes. we write it to be string of hexadecimal number. we will call payload frame from now. frame can be divide into header and data/EUI
 
-[format_image](/README_assets/frame_format.png)
+![format_image](/README_assets/frame_format.png)
 
 >Frame = address receiver (8 bits) + address sender (8 bits) + network address + frame type (8 bits) + node data (32 bits) or EUI (64 bits)
 
@@ -43,25 +43,25 @@ what each fields mean
 
 #### Network address negotiate
 
-[netAddr_neg_image](/README_assets/netAddr_neg.png)
+![netAddr_neg_image](/README_assets/netAddr_neg.png)
 
 Master will create it own network which have it own netAddr in the range of 32 - 254. after power on it will start at first channel (CH0) and send netAddr negotiate frame asking all other master to answer with there own netAddr. it will remember all the receive netAddr and change to next channel after time out and do the same thing again. if it finish sweep across all channel it will than calculate netAddr that is not a duplicate of any other netAddr and than declare that netAddr. if no one denial that netAddr it will claim that netAddr as it own. but if some master denial that netAddr it will calculate new netAddr change channel and declare again. if none of netAddr are available than it will use predefine netAddr of 255.
 
 #### Joining
 
-[join_image](/README_assets/joining.png)
+![join_image](/README_assets/joining.png)
 
 Node will join network and have it own address, netAddr which it will get from master. after power on it will start joining which is sending join request frame at first channel than wait for master join accept if it not receive that within fix duration it will change to next channel and do the same and will loop back to first channel until master send join accept. than it will send ACK back and wait for master ACK. if master not receive node ACK it won't retry and joining set to fail which if node still present node will try to join again later. same thing if node not receive master ACK after it send node ACK it won't retry and just change channel after time out. if master still present it will get another chance later. the join accept frame from master (with node correct EUI) in header node will use addrReceiver in the range of 32 - 254 as well as netAddr as it own address and netAddr.
 
 #### Polling with and without ACK
 
-[polling_image](/README_assets/polling_with_without_ack.png)
+![polling_image](/README_assets/polling_with_without_ack.png)
 
 Polling can be done with or without acknowledgment (ACK). only joined node can be polling. with ACK mode master send frame asking for data with frameType set to ACK mode. node will send it data and wait for master ACK if node not receive master ACK after set duration it will send data again (retry). the number of retry are fix at 3 that mean it can send up to 4 time. same for the master if it not receive node data after set duration it will ask again (retry) and can also do it up to 4 time. in without ACK mode master send frame asking for data with frameType set to no ACK mode. and it wait for answer within set duration if node didn't answer it won't retry and continue polling next node instead. and for the node it will send data and than don't care because there aren't retry in without ACK mode.
 
 #### Node remove
 
-[node_remove_image](/README_assets/node_remove_pic.png)
+![node_remove_image](/README_assets/node_remove_pic.png)
 
 Master can remove node which will set it to start doing join request again. first master send node remove frame with node EUI to node that it want to remove. than node will send ACK back and wait for master ACK. if master not receive node ACK after it send node remove master will set node remove as fail.
 
@@ -482,7 +482,7 @@ You have to make duty cycle of transmit to be within 1% for master because maste
 
 4. if you have <ins>20 node and with ACK mode at SF 10</ins> and **if no frame loss** the total time on air are (20 node *2 frame per node * 232ms) = 9280ms the polling interval are at least 99 * 9280 = 918720ms **(918.72 second) 15 minute and 18.72 second**
 
-[HW_image](/README_assets/HW_pic.jpg)
+![HW_image](/README_assets/HW_pic.jpg)
 
 and this is the picture of ESP32 and RAK4200 that i use
 
@@ -518,7 +518,7 @@ I am probably the only one who read all this. so i will use space here for note 
 	
 - look into use another frequency instead of mimic LoRaWAN AS923. i think about using 920MHz - 923MHz. with that i can have 15 channel. and also i think about reduce channel bandwidth to only 150kHz to increase nuber of channel further to 20 as well.
 
-[spectrum_image](/README_assets/RTL-SDR_crop.png)
+![spectrum_image](/README_assets/RTL-SDR_crop.png)
 
 this is the spectrum of all 9 channel using right now. from RTL-SDR using SDR#
 
