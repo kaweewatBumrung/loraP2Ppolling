@@ -3,12 +3,12 @@ This is Arduino library to communicate between device using **lora P2P** (Peer T
 
 loraP2Ppolling is **NOT** using LoRaWAN [lora vs LoRaWAN][lora vs LoRaWAN link] it only use lora P2P (Peer To Peer) which is physical layer of LoRaWAN. the goal for this library are to create simple communication link from sensors at many nodes to a single device like a point-to-multipoint. <ins>e.g.</ins> read moisture sensors from many nodes into single ESP32 than you can do whatever with that data. 
 
-Why not use LoRaWAN? to use LoRaWAN that mean you have to use one of LoRaWAN network operator who have coverage at your location like the things network or here in thailand we also have [LoRa IoT by CAT][catLoRa link]. but most of the time you will have some [restriction][ttn fair-use link] or subscription cost. In another way you can have your own Private networks but that need LoRaWAN gateway. which price start around 70$ or more for a simple indoor gateway ([TTIG][The Things Indoor Gateway link], [pygate+WiPy][pygate link]). this lead me to think about using just lora P2P for some simple network. but of cause the advantage of LoRaWAN are it gataway that can work with multiple spreading factor and frequency band. but for simple small network that is just collect data from multiple sensors. using less capability lora device such as as normal end device type lora module which are cheaper. and this way you also have more control over your own network. this library also use external library [CircularBuffer][CircularBuffer link]
+Why not use LoRaWAN? to use LoRaWAN that mean you have to use one of LoRaWAN network operator who have coverage at your location. like the things network or here in thailand we also have [LoRa IoT by CAT][catLoRa link]. but most of the time you will have some [restriction][ttn fair-use link] or subscription cost. In another way you can have your own Private networks but that need LoRaWAN gateway. which price start around 70$ or more for a simple indoor gateway ([TTIG][The Things Indoor Gateway link], [pygate+WiPy][pygate link]). this lead me to think about using just lora P2P for some simple network. but of cause one of the advantage of LoRaWAN are it gataway. that can work with multiple spreading factor and frequency band. but for simple small network that just collect data from multiple sensors are possible using less capability lora device. such as as normal end device type lora module which are cheaper. and this way you also have more control over your own network. this library also use external library [CircularBuffer][CircularBuffer link]
 
-**Warning :** There are local regulation [กฏ กสทช.][กฏ กสทช. link] here in thailand. you **MUST** check what are status of rule are at the time. and i might not be able to update this library or this document or this warning at that time. always check the rule. what we using is just lora but more commonly we see this type of device using LoRaWAN so i try to understand it in the context of LoRaWAN which here in thailand are usable within 920MHz - 925MHz and for LoRaWAN it use frequency plan AS923. what i understand there 3 rule that this type of device must follow
+**Warning :** There are local regulation [กฏ กสทช.][กฏ กสทช. link] here in thailand. you **MUST** check what are status of rule are at the time. and i might not be able to update this library or this document or this warning. always check the rule. what we using is just lora but more commonly we see this type of device using LoRaWAN so i try to understand it in the context of LoRaWAN which here in thailand are usable within 920MHz - 925MHz and for LoRaWAN it use frequency plan AS923. what i understand there 3 rule that this type of device must follow
 - **Power limit** in term of e.i.r.p. no more than 50mW which is ~17dBm. (there are more power option but you need license)
-- **Duty cycle** with in 1 hour no more than 1%.
-- **Dwell Time** no more than 400ms. i'm not sure about what this will applied in what we will doing. dwell time is (what i think) are duration spend in single channel with a specific bandwidth in the FHSS (Frequency Hopping Spread Spectrum) system. in LoRaWAN the hopping part are (again what i think) the fact that node can send frame to gateway in multiple channel because gateway can receive frame from multiple channel with difference spreading factor at the same time. so in what this library aim to do there are frequency switching but once device create/joined network it will not switching between frequency any more. this is main difference of what this library do and what LoRaWAN do. maybe what i want to do is not FHSS any more. and difference rule will applied but if it the same than that simple mean no more than 400ms time on air. which mean you can't use SF11, SF12 because minimum frame length (just bare header) is already longer than that and this applied to LoRaWAN as well [LoRaWAN air time calculator][time on air calculator link].
+- **Duty cycle** with in 1 hour. no more than 1%.
+- **Dwell Time** no more than 400ms. i'm not sure about what this will applied in what we will doing. dwell time is (what i think) are duration spend in single channel with a specific bandwidth in the FHSS (Frequency Hopping Spread Spectrum) system. in LoRaWAN the hopping part are (again what i think) the fact that node can send frame to gateway in multiple channel. because gateway can receive frame from multiple channel with difference spreading factor at the same time. this library also doing frequency switching. but once device create/joined network it will no longer switching between frequency any more. this is main difference of what this library do and what LoRaWAN do. maybe this is not FHSS any more. and need difference rule. but if it the same than that mean no more than 400ms time on air. which mean you can't use SF11, SF12 because minimum frame length (just bare header) is already longer than that and this applied to LoRaWAN as well [LoRaWAN air time calculator][time on air calculator link].
 
 and  keep in mind that you should check from difference source for what the rule mean. do not just trust me
 
@@ -16,57 +16,62 @@ and  keep in mind that you should check from difference source for what the rule
 
 ![system_image](/README_assets/polling_crop.png)
 
-The core function that we want are to polling data from each node into to master. here node mean end device and you can think of master as a kind of a gateway to the internet or user. master and node using lora P2P as a communicate link. polling here simple mean you keep asking each node about it sensor data. and we just send that data using lora P2P. but lora frame is just broadcast into air like a normal wireless does. so here in this system i design number of thing.
-- Frame format and header to know who send, who receive, and what kind of frame is it. 
-- Address, for master it will have a fix address but each node we need to be able to distinguish between each node. so we use EUI (Extended Unique Identifiers). that should be unique to every node which can be found on sticker of RAK4200 module. but it is 64 bits long which is too long. so we will have master assign 8 bits address to each node after node joined master own network and use that address for polling instead. maximum number of node are 223.
-- Network address there can be multiple networks working independently. the network itself design to be a star topology with master at the center and many nodes around it. if you want to have more than one network you can try but there are some limitation [Note](#note).
-- I choose to mimic the frequency channel ues in LoRaWAN frequency plan AS923. which i choose 9 channel at 923.2, 923.4, 923.6, 923.8, 924, 924.2, 924.4, 924.6 and 924.8MHz. this may change in the future as i look into using frequency outside of LoRaWAN to avoid interference with it.
-- Fix bandwidth at 125kHz coding rate of 4/8 and 8 symbol of preamble. you can set the spreading factor (SF) and power but once set it will be fix through the rest of operation.
+The core function that we want are to polling data from each node into to master. here node mean end device and you can think of master as a kind of a gateway to the internet or user. master and node using lora P2P as a communicate link. polling mean you keep asking each node about it sensor data. and we just send that data using lora P2P. but lora frame is just broadcast into air like a normal wireless does. so here in this system i design number of thing.
+- **Frame format** and header to know who send, who receive, and what kind of frame is it.
+
+- **Address**, for master it will have a fix address but each node we need to be able to distinguish between each node. so we use EUI (Extended Unique Identifiers). that should be unique to every node which can be found on sticker of RAK4200 module. but it is 64 bits long which is too long. so we will have master assign 8 bits address to each node after node joined master own network and use that address for polling instead. maximum number of node are 223 in the range of 32 - 254.
+
+- **Network address** there can be multiple networks working independently. the network itself design to be a star topology with master at the center and many nodes around it. if you want to have more than one network you can try but there are some limitation [Note](#note).
+
+- This library mimic the frequency channel ues in LoRaWAN frequency plan AS923. which i choose **9 channel** at 923.2MHz, 923.4MHz, 923.6MHz, 923.8MHz, 924MHz, 924.2MHz, 924.4MHz, 924.6MHz and 924.8MHz. this may change in the future as i look into using frequency outside of LoRaWAN to avoid interference with it.
+
+- **Fix bandwidth at 125kHz, coding rate of 4/8, and 8 symbol of preamble.** you can set the spreading factor (SF) and power but once set it will be fix through the rest of operation.
+
 - system that use difference SF should work without interfere other system in other SF. but i don't have enough device to test how much it can tolerate.
 
-**Warning :** This is simple star topology with master-nodes and as of now specific hardware (ESP32 with RAK4200). it may not be suitable for your use case. (see [Note](#note)) I first write this library intent for personal use. but as it functionality grow i thought i should share this so it might be helpful to someone else and also to practice my skill include write all this up as well. also i am just a beginner in lora/LoRaWAN or in programming in general and this is my first repository. please forgive me if this library/code done something wrong or inefficient to your use case (or if you have trouble read my code or my english skill here are too bad). if you want to verify how it work or how to modify it you can inspect every single line of code here yourself. also before i start making this library i look around for something similar but could not find any maybe there and i just can't find it.
+**Warning :** This is simple star topology with master-nodes and as of now specific hardware (ESP32 with RAK4200). it may not be suitable for your use case. (see [Note](#note)) I first write this library intent for personal use. but as it functionality grow i thought i should share this so it might be helpful to someone else and also to practice my skill include write all this document up as well. also i am just a beginner in lora/LoRaWAN or in programming in general. and this is my first repository. please forgive me if this library/code done something wrong or inefficient to your use case (or if you have trouble read my code or my english skill here are too bad). if you want to verify how it work or how to modify it you can inspect every single line of code here yourself.
 
 #### Frame format
-To send some data with lora we call that data payload. that can only be compose of number of full bytes. we write it to be string of hexadecimal number. we will call payload frame from now. frame can be divide into header and data/EUI
+To send some data with lora we call that data payload. that can only be compose using number of full bytes. we write it to be string of hexadecimal number. we will call payload frame from now. in this system frame can be divide into header and data/EUI
 
 ![format_image](/README_assets/frame_format.png)
 
 >Frame = address receiver (8 bits) + address sender (8 bits) + network address + frame type (8 bits) + node data (32 bits) or EUI (64 bits)
 
 what each fields mean
-- **address receiver** (addrReceiver) are 8 bits address that every master and node have and it **Only** unique within it own network. for both master and node that not create/joined network it will have unique predefine address. master address are fix but node address are dynamically assign by master when node joined a network using node EUI.
+- **address receiver** (addrReceiver) are 8 bits address that every master and node have and it **Only** unique within it own network. for both master and node that not create/joined network yet it will have unique predefine address. master address are fix but node address are dynamically assign by master when node joined a network using node EUI.
 - **address sender** (addrSender) same as address receiver
 - **network address** (netAddr) are 8 bits address for every network. when master create network it will assign itself and it own node the same netAddr.
-- **frame type** (frameType) are 8 bits data that describe what frame is it. master/node will do difference thing about any frame base on what type of it and what state of master/node at that moment.
-- **data** this is the sensors data that master polling from node. fix length at 32 bits and there 3 data mix together 8 bit Batt, 12 bit moisture, 12 bit temperature. you can't change length or number of data and you might want to so see [Note](#note)
-- **EUI** are Extended Unique Identifiers we use it to distinguish between each node before it joined a network. and also when need to remove that node as well.
+- **frame type** (frameType) are 8 bits data that describe what frame is it. master/node will do difference thing about any frame base on what type of frame is it and what state of master/node at that moment.
+- **data** this is the sensors data that master polling from node. it fix length of 32 bits and there 3 data mix together 8 bit Batt, 12 bit moisture, 12 bit temperature. you can't change length or number of data and you might want to so see [Note](#note)
+- **EUI** are Extended Unique Identifiers we use it to distinguish between each node before it joined a network. and also for remove node as well.
 
 #### Network address negotiate
 
 ![netAddr_neg_image](/README_assets/netAddr_neg.png)
 
-Master will create it own network which have it own netAddr in the range of 32 - 254. after power on it will start at first channel (CH0) and send netAddr negotiate frame asking all other master to answer with there own netAddr. it will remember all the receive netAddr and change to next channel after time out and do the same thing again. if it finish sweep across all channel it will than calculate netAddr that is not a duplicate of any other netAddr and than declare that netAddr. if no one denial that netAddr it will claim that netAddr as it own. but if some master denial that netAddr it will calculate new netAddr change channel and declare again. if none of netAddr are available than it will use predefine netAddr of 255.
+Master will create it own network which have it own netAddr in the range of 32 - 254. after power on. it will start at first channel (CH0) and send netAddr negotiate frame asking all other master to answer with there own netAddr. it than remember all the receive netAddr and change to next channel after time out and do the same thing again. if it finish sweep across all channel it will than calculate netAddr that is not a duplicate of any other netAddr. and than declare that netAddr. if no one denial that netAddr it will claim that netAddr as it own. but if some master denial that netAddr it will calculate new netAddr change channel and declare again. if none of netAddr are available than it will use predefine netAddr of 255.
 
 #### Joining
 
 ![join_image](/README_assets/joining.png)
 
-Node will join network and have it own address, netAddr which it will get from master. after power on it will start joining which is sending join request frame at first channel than wait for master join accept if it not receive that within fix duration it will change to next channel and do the same and will loop back to first channel until master send join accept. than it will send ACK back and wait for master ACK. if master not receive node ACK it won't retry and joining set to fail which if node still present node will try to join again later. same thing if node not receive master ACK after it send node ACK it won't retry and just change channel after time out. if master still present it will get another chance later. the join accept frame from master (with node correct EUI) in header node will use addrReceiver in the range of 32 - 254 as well as netAddr as it own address and netAddr.
+Node will join network and get it own address, netAddr which it will get from master. after power on it will start joining which is sending join request frame at first channel than wait for master join accept. if it not receive t32 bits within fix duration it will change to next channel and do the same and will loop back to first channel. until master send join accept. than it will send ACK back and wait for master ACK. if master not receive node ACK. it won't retry and this joining are fail. which if node still present node will try to start joining again later. same thing if node not receive master ACK. after it send node ACK it won't retry and just change channel after time out. if master still present it will get another chance later. the join accept frame from master (with node correct EUI) in the header. node will use that frame addrReceiver as well as netAddr as it own address and netAddr.
 
 #### Polling with and without ACK
 
 ![polling_image](/README_assets/polling_with_without_ack.png)
 
-Polling can be done with or without acknowledgment (ACK). only joined node can be polling. with ACK mode master send frame asking for data with frameType set to ACK mode. node will send it data and wait for master ACK if node not receive master ACK after set duration it will send data again (retry). the number of retry are fix at 3 that mean it can send up to 4 time. same for the master if it not receive node data after set duration it will ask again (retry) and can also do it up to 4 time. in without ACK mode master send frame asking for data with frameType set to no ACK mode. and it wait for answer within set duration if node didn't answer it won't retry and continue polling next node instead. and for the node it will send data and than don't care because there aren't retry in without ACK mode.
+Polling can be done with or without acknowledgment (ACK). only joined node can be polling. with ACK mode master send frame asking for data with frameType set to ACK mode. node will send it data and wait for master ACK. if node not receive master ACK after set duration it will send data again (retry). the number of retry are fix at 3 that mean it can send up to 4 time. same for the master if it not receive node data after set duration it will ask again (retry). and can also do it up to 4 time. in without ACK mode master send frame asking for data with frameType set to no ACK mode. and it wait for answer within set duration. if node didn't answer it won't retry and will than continue polling next node instead.  for the node it will send data and than don't care because there no retry in without ACK mode.
 
 #### Node remove
 
 ![node_remove_image](/README_assets/node_remove_pic.png)
 
-Master can remove node which will set it to start doing join request again. first master send node remove frame with node EUI to node that it want to remove. than node will send ACK back and wait for master ACK. if master not receive node ACK after it send node remove master will set node remove as fail.
+Master can remove node. the node will than start doing join request again. first master send node remove frame with node EUI to node that it want to remove. than node will send ACK back and wait for master ACK. if master not receive node ACK. master will set this node remove attempt as fail.
 
 #### Finite state machine
-The core function for both master and node is just finite state machine. it use to describe what the machine (system) that can be in one of a finite number of states at a time. and it can change from one state to another in response to some inputs (state transition). i use it to design the system as well as describe it in the table below. keep in mind that this table will be just a simplify version.
+The core function for both master and node is just finite state machine. it use to describe what the machine (system). that will be in one of a finite number of states at a time. and it can change from one state to another in response to some inputs (state transition). i use it to design the system as well as describe it in the table below. keep in mind that this table will be just a simplify version.
 
 **Master state machine**
 <table>
@@ -115,17 +120,17 @@ The core function for both master and node is just finite state machine. it use 
   </tr>
   <tr>
     <td>S8</td>
-    <td>Frame decoder<br>- decode frame and look at what type of frame is it<br>- if it join request frame add to <br>join request list<br>- if netAddr negotiate set flag</td>
-    <td>8.5&nbsp;&nbsp;&nbsp;: when it polling with ACK type<br>8.9&nbsp;&nbsp;&nbsp;: when it polling without ACK type<br>8.7&nbsp;&nbsp;&nbsp;: when it non polling and we in without ACK mode<br>8.4&nbsp;&nbsp;&nbsp;: when it non polling and we in with ACK mode</td>
+    <td>Frame decoder<br>- decode frame and look at what type of frame is it<br>- if it join request frame. add to join request list<br>- if netAddr negotiate frame. set flag</td>
+    <td>8.5&nbsp;&nbsp;&nbsp;: when ti polling with ACK type frame<br>8.9&nbsp;&nbsp;&nbsp;: when ti polling without ACK type frame<br>8.7&nbsp;&nbsp;&nbsp;: when it non polling frame and we in without ACK mode<br>8.4&nbsp;&nbsp;&nbsp;: when it non polling frame and we in with ACK mode</td>
   </tr>
   <tr>
     <td>S9</td>
-    <td>Polling success<br>- call function that we set up to call<br>at polling finish and set it as success<br></td>
+    <td>Polling success<br>- call function that we set up to call at polling finish. and set it as success<br></td>
     <td>9.2&nbsp;&nbsp;&nbsp;: when finish function call</td>
   </tr>
   <tr>
     <td>S10</td>
-    <td>Polling fail<br>- call function that we set up to call<br>at polling finish and set it as not success</td>
+    <td>Polling fail<br>- call function that we set up to call at polling finish. and set it as not success</td>
     <td>10.2 : when finish function call</td>
   </tr>
   <tr>
@@ -140,33 +145,33 @@ The core function for both master and node is just finite state machine. it use 
   </tr>
   <tr>
     <td>S22</td>
-    <td>ACK back when node join<br>- Send ack back at node with netAddr <br>and node address for that node</td>
+    <td>Send ack back at node<br>- Send ack back at node with netAddr <br>and node address for that node</td>
     <td>22.2 : when finish sending</td>
   </tr>
   <tr>
     <td>S25</td>
-    <td>netAddr negotiate<br>- check what to answer that frame<br>- if it asking than answer<br>- if it declare check if conflict and if <br>we need to send denial</td>
+    <td>netAddr negotiate<br>- check what to answer this netAddr negotiate frame<br>- if it asking than answer<br>- if it declare check for conflict.<br>- if we need to send denial</td>
     <td>25.2 : when finish</td>
   </tr>
   <tr>
     <td>S26</td>
-    <td>Remove node<br>- check if the node to remove exist<br>- if it is than send node remove to node</td>
+    <td>Remove node<br>- check if the node to remove exist<br>- if it exist than send node remove frame to that node</td>
     <td>26.2 : when node to remove not exist<br>26.27: when we finish sending node remove</td>
   </tr>
   <tr>
     <td>S27</td>
-    <td>Wait for node to answer node remove<br>- wait for node to answer<br>- if node answer (ACK back) than remove node from polling list, to accept list<br>- clear node remove flag when finish or timeout</td>
+    <td>Wait for node to answer node remove<br>- wait for node to answer<br>- if node answer (ACK back) than remove node from polling list and to accept list<br>- clear node remove flag when finish or timeout</td>
     <td>27.2 : when finish remove node or node not answer</td>
   </tr>
   <tr>
     <td>S30</td>
     <td>Start network address negotiate<br>- start network address negotiate <br>to create network and send asking frame (start sweep)<br>- check if finish sweeping all 9 channel</td>
-    <td>30.32: when finish in all channel and no answer<br>30.31: when finish sending</td>
+    <td>30.32: when finish asking in all channel. and no answer<br>30.31: when finish sending</td>
   </tr>
   <tr>
     <td>S31</td>
-    <td>Wait for netAddr negotiate frame<br>- wait for netAddr negotiate frame<br>- check if sweep timeout (to next channel)<br>- if receive answer frame add to list</td>
-    <td>31.30: when timeout (to next channel)<br>31.32: when receive asking frame skip the rest of sweep</td>
+    <td>Wait for netAddr negotiate frame<br>- wait for netAddr negotiate frame<br>- check if sweep timeout (to next channel)<br>- if receive answer frame. add to list</td>
+    <td>31.30: when timeout (to next channel)<br>31.32: when receive asking frame. skip the rest of sweep</td>
   </tr>
   <tr>
     <td>S32</td>
@@ -175,7 +180,7 @@ The core function for both master and node is just finite state machine. it use 
   </tr>
   <tr>
     <td>S33</td>
-    <td>Wait for netAddr negotiate frame<br>- wait for netAddr negotiate frame<br>- if receive answer, declare, denial add to list<br>- if there new netAddr in list calculate netAddr<br>again<br>- if we have new netAddr change channel</td>
+    <td>Wait for netAddr negotiate frame<br>- wait for netAddr negotiate frame<br>- if receive answer, declare, denial add to list<br>- if there new netAddr in list calculate netAddr again<br>- if we have new netAddr. change channel</td>
     <td>33.32: when we need to chane channel (need to declare again)<br>33.1 : when success</td>
   </tr>
 </tbody>
@@ -198,8 +203,8 @@ The core function for both master and node is just finite state machine. it use 
   </tr>
   <tr>
     <td>S2</td>
-    <td>Decode<br>- decode frame and look at what type of frame is it<br>- if it polling from master is it ACK or no ACK</td>
-    <td>2.1   : when receive unknow frame<br>2.3&nbsp;&nbsp;&nbsp;: when receive polling frame<br>2.20 : when receive declare same netAddr (join again)<br>2.26 : when receive this node remove</td>
+    <td>Decode<br>- decode frame and look at what type of frame is it<br>- if it polling from master. is it ACK or no ACK</td>
+    <td>2.1&nbsp;&nbsp;&nbsp;: when receive unknow frame<br>2.3&nbsp;&nbsp;&nbsp;: when receive polling frame<br>2.20 : when receive declare of same netAddr (join again)<br>2.26 : when receive this node remove</td>
   </tr>
   <tr>
     <td>S3</td>
@@ -243,13 +248,13 @@ The core function for both master and node is just finite state machine. it use 
   </tr>
   <tr>
     <td>S21</td>
-    <td>Decode accept<br>- wait for any frame<br>- if master send accept, <br>send accept ACK back<br>- if master accept set it own address, netAddr<br>,master address as what master send </td>
+    <td>Decode accept<br>- wait for any frame<br>- if master send accept, send accept ACK back<br>- if master accept. set it own address, netAddr,master address as what master send </td>
     <td>21.20: when timeout to change channel<br>21.22: when receive accept frame from master</td>
   </tr>
   <tr>
     <td>S22</td>
-    <td>Decode accept ACK<br>- wait for frame<br>- if master send ACK back, set it self as joined</td>
-    <td>22.20: when timeout (start join request again)<br>22.1  : when receive master ACK</td>
+    <td>Decode accept ACK<br>- wait for accept frame<br>- if master send ACK back, set it self as joined</td>
+    <td>22.20: when timeout. start join request again<br>22.1  : when receive master ACK</td>
   </tr>
   <tr>
     <td>S25</td>
@@ -259,12 +264,12 @@ The core function for both master and node is just finite state machine. it use 
   <tr>
     <td>S26</td>
     <td>Node remove<br>- check if master remove this node<br>- if master remove this node send ACK back</td>
-    <td>26.27: when finish sending<br>26.1&nbsp;&nbsp;: when remove node frame are not for this node</td>
+    <td>26.27: when finish sending<br>26.1&nbsp;&nbsp;: when the remove node frame are not for this node</td>
   </tr>
   <tr>
     <td>S27</td>
-    <td>Wait for remove ACK<br>- wait for master ACK<br>- if receive master ACK set it own to not join</td>
-    <td>27.1&nbsp;&nbsp;: when both success or time out (not success)</td>
+    <td>Wait for remove ACK<br>- wait for master ACK<br>- if receive master ACK. set it own to not join</td>
+    <td>27.1&nbsp;&nbsp;: when both success or time out</td>
   </tr>
 </tbody>
 </table>
@@ -420,7 +425,7 @@ void readMoisture (uint16_t& _moisture)
 - for node you can set Exled that will just toggle when it about to send data. i use it for debug. don't set it if you not using it.
 
 > P2Ppolling.FSM_polling();
-- both master and node you just use this method to do all the work. it should get call very often so keep the you loop short.
+- for both master and node you just use this method to do all the work. it should get call very often so keep the you loop short and fast.
 
 > void printData (uint8_t _addr, int success)
 - for master this is the function that you set to get it call every time master finish polling a node.
@@ -432,11 +437,11 @@ you can name it what you like **BUT** you must keep function return type (void) 
 
 **What if you can't find unique 64 bits number to use as EUI**
 
-than you should find another source of unique number like your microcontroller unique id. or make it as random as you can and go from there. don't forgot to set the same EUI for node and master (to accept)
+than you should find another source of unique number or serial number. like your microcontroller unique id. or make it as random as you can. don't forgot to set the same EUI for node and master (to accept)
 
 #### Calculate polling interval
 
-You have to make duty cycle of transmit to be within 1% for master because master will have to transmit more often than node. can be calculate by the number of node you need and number of frame master have to send for all the node and time on air (duration to transmit frame). that mean your interval have to be **at least (99 * total time on air for all transmit frame)** also each spreading factor (SF) will reduce or increase your time on air and polling interval. time no air are in table for difference SF. the polling frame and ACK from master are 4 bytes. and fix bandwidth at 125kHz coding rate of 4/8 and 8 symbol. i'm **not include joining or netAddr negotiate** partly because it will be small part in normal operation (or only at the start if you system not change). but you should keep that in mind as well.
+You have to make duty cycle of transmit to be within 1%. and because master will have to transmit more often than node we have to use master duty cycle of transmit. it can be calculate using the number of node you need multiply by number of frame master have to send for all the node. with specific time on air (duration to transmit frame) multiply by 99. that mean your interval have to be **at least (99 * total time on air for all transmit frame)** also each spreading factor (SF) will reduce or increase your time on air and polling interval. the polling frame and ACK frame from master are 4 bytes. and fix bandwidth at 125kHz, coding rate of 4/8 and 8 symbol of preamble. i'm **not include joining or netAddr negotiate** partly because it will be small part in normal operation (or only at the start if you system not change). but you should keep that in mind as well. the value are in the table below.
 
 (value from semtech lora modem calculator tool)
 
@@ -486,6 +491,8 @@ You have to make duty cycle of transmit to be within 1% for master because maste
 
 4. if you have <ins>20 node and with ACK mode at SF 10</ins> and **if no frame loss** the total time on air are (20 node *2 frame per node * 232ms) = 9280ms the polling interval are at least 99 * 9280 = 918720ms **(918.72 second) 15 minute and 18.72 second**
 
+5. if you have <ins>100 node and without ACK mode at SF 9</ins> the total time on air are (100 node *1 frame per node * 116ms) = 11600ms the polling interval are at least 99 * 11600 = 1148400ms **(1148.4 second) 19 minute and 18.4 second**
+
 ![HW_image](/README_assets/HW_pic.jpg)
 
 and this is the picture of ESP32 and RAK4200 that i use
@@ -495,38 +502,38 @@ and this is the picture of ESP32 and RAK4200 that i use
 
 **There aren't any Encryption or Authentication in here at all**
 
-partly because i'm don't have enough knowledge to **do it correctly**. and i don't want to give false sense of security. both master and node are just read the frame header than do what it should do with it. so keep in mind that there aren't any encryption or authentication. i might try to implement something in the future but i can't make any promise. it up to you if you can take the risk of someone try to send wrong value or they read your sensor. for what i want to use this for it won't bring down larger infrastructure or other part of the system immediately. but you have to keep this in mind.
+Partly because i don't have enough knowledge to **do it correctly**. and i don't want to give false sense of security. both master and node are just read the frame header than do what it should do with it. so keep in mind that there aren't any encryption or authentication. i might try to implement something in the future but i can't make any promise. it up to you if you can take the risk of someone try to send wrong value or they read your sensor. for what i want to use this for it won't bring down larger infrastructure or other part of the system immediately. but you have to keep this in mind.
 
 **Number of network limitation** (not done!)
 
-if you just look at the number of netAddr that can be assign it 223. but i recommend to use no more than 9 for a single network per channel. or if you want to try 2 network per channel for a total of 18 network. if there are more network there will be problem at the netAddr negotiate process because right now if any device send netAddr asking master will answer it right away which will cause frame collision. i want to fix this in the future by add some kind of unique time slot for each network to answer to avoid frame collision as much as possible. and also make node answer netAddr negotiate as well. because in the case of if only node are in the range of the master that asking but not in the range of existing master. right now if that the case the new master might claim the same netAddr as the node and lead to more problem. i want to fix this but i can't really promise. however as you are the one who set the network yourself you should to make less but big network instead or limit it to no more than 18 network for now.
+If you just look at the number of netAddr that can be assign. it is 223. but i recommend to use no more than 9 for a single network per channel. or if you want 2 network per channel. for a total of 18 network. if there are more than 18 network there will be problem at the netAddr negotiate process. because right now if any device send netAddr asking frame. all the master that can receive this frame will answer it right away. which will cause frame collision. i want to fix this in the future by add some kind of unique time slot for each network to answer. and try to avoid frame collision as much as possible. also i want node to answer netAddr negotiate as well. because in the case of if the only device that are in the range of that master who send netAddr asking. but that master are not in the range of existing master. right now if that happen the new master might claim the same netAddr as the node. and that lead to more serious problem. i want to fix this but i can't really promise. however as you are the one who setup the network yourself. you should make big network instead of many small network. or limit it to no more than 18 network for now.
 
 **Compatible hardware limitation**
 
-compatible hardware as of v1.0.0 are ESP32 and RAK4200. for the MCU side my only code that are specific to ESP32 are probably Serial.begin that can set UART pin. so it should not be too hard to support other architecture if it only need UART. but the more problem one are lora module. the RAK4200 (RAK4270 probably work but i don't have any to test) are (sx1276 + stm32) and are easy to setup we just need to know at command and for that i use mod_ETT_RAK4200 which i modify from the file that came from [ETT RAK4200][ETT RAK4200 link] to easy set mode, receive and send frame. this is difference than most "lora" board that are connect with semtech sx127X, sx126X directly with SPI. i want to support this in the future too. but i can't promise and if you want to use this library with something like HopeRF RFM95 than unfortunately you have to modify it your self or if you want to you can contribute to this library to make it work. and you can see my todo for what you should modify or add to support more module.
+Compatible hardware as of v1.0.0 are ESP32 and RAK4200 and RAK4270 probably work but i don't have any to test. for the MCU side my code that are specific to ESP32 are probably Serial.begin that can set UART pin and Serial.setRxBufferSize. so it should not be too hard to support other architecture if it only need UART. but the more problem one are lora module. the RAK4200 are (sx1276 + stm32) and are easy to setup we just need to know how to use it at command and for that i use mod_ETT_RAK4200 which i modify from the file that came from [ETT RAK4200][ETT RAK4200 link] to easy set mode, receive and send frame. this is difference than most "lora" board that are connect with semtech sx127X, sx126X directly with SPI. i want to support this in the future too. but i can't promise. and if you want to use this library with something like HopeRF RFM95. unfortunately you have to modify the code yourself. and if you want to. you can contribute to this library to make it work. see my todo for what you should modify or add to support more module.
 
 **Data format limitation**
 
-right now data format that node send to master are fix. this is again because my own lack of necessary knowledge to make it to be able to change at start up. right now it fix to what i want to use it with. if you want to change that unfortunately you have to modify the code yourself and you can see my todo for what you should modify or add to support that.
+Right now data format that node send to master are fix. this is again because my own lack of necessary knowledge to make it to be able to change at start up. right now it fix to what i want to use it with. unfortunately if you want more data. you have to modify the code yourself and you can see my todo for what you should modify or add to support that.
 
 ###### Todo and note to self from author
 
-I am probably the only one who read all this. so i will use space here for note to myself about why i make this library. first just from the limitation this library is not so complete and not in the same standard as many arduino library. but the reason i still put it here. because i might not be able to update this or maybe only do some minor fix because what i want to do with it don't need that much functionality. i can just keep it to myself but i spend a lot of time and effort making it. so i think even though this library aren't that good or seem incomplete i want to make that effort useful maybe someone see this library ideal and decide to make a better one. and also i use and like many open source software (or FOSS in general) and someday i want to contribute as well so i think this library even though it probably not that useful but it the first step for me toward making a better one or first step to support more source software for me.
+I am probably the only one who read all this. so i will use space here for note to myself about why i make this library. first just from the limitation this library is not really "complete" and surely not in the same standard as many arduino library. but the reason i still put it here. because i might not be able to update this or maybe only able to do some minor fix. with what i want to do with from this library. i don't need that much functionality. i can just keep it to myself. but i spend a lot of time and effort making it. so even though this library aren't that good or seem incomplete. i want to make that effort useful. maybe someone see this library idea and decide to make a better one. and also i use and like many open source software (or FOSS in general) and someday i want to contribute as well. so i think this library even though it probably not that useful but it the first step for me toward making a better one or first step to support more open source software for me.
 
-- what to modify or add to support more module. i probably add another layer between P2Ppolling class (FSM) and module driver and have FSM call this middle layer instead. this middle will replace what is  right now came from mod_ETT_RAK4200. which are
+- what to modify or add to support more module. i probably add another layer between P2Ppolling class (FSM) and module driver. and have FSM call this middle layer instead. this middle will replace what is  right now came from mod_ETT_RAK4200. which are
 	- initial lora module Working Mode to P2P (RakLoRa.rk_setWorkingMode)
 	- set P2P parameter (RakLoRa.rk_initP2P)
 	- set P2P to receiver or transmitter (RakLoRa.rk_initP2P_mode)
 	- send frame (RakLoRa.rk_sendP2PData)
 	- receive frame (it just read back at_command from RAK4200) (RakLoRa.rk_recvP2PData)
 	
-- look into use another frequency instead of mimic LoRaWAN AS923. i think about using 920MHz - 923MHz. with that i can have 15 channel. and also i think about reduce channel bandwidth to only 150kHz to increase nuber of channel further to 20 as well.
+- look into use another frequency range instead of mimic LoRaWAN AS923. i think about using 920MHz - 923MHz. with that i can have 15 channel. and also maybe i can reduce channel bandwidth to only 150kHz to increase number of channel further to 20 as well.
 
 ![spectrum_image](/README_assets/RTL-SDR_crop.png)
 
-this is the spectrum of all 9 channel using right now. from RTL-SDR using SDR#
+this is the spectrum of all 9 channel. from RTL-SDR using SDR# program
 
-- the data that node send to master are fix in the number of fields and length. i should add a method to set the data format at compile time. and that set the same data format for all the master and node but right now i still learning how to do something like that so again i can't promise that i will add that functionality.  
+- the data that node send to master are fix in the number of fields and length. i should add a method to set the data format at compile time. and than set the same data format for all the master and node but right now i still learning how to do something like that. so again i can't promise that i will add that functionality.
 
 - this library use [CircularBuffer][CircularBuffer link] to create FIFO buffer which is kind of a queue for master to process join request in order from first to last. i use it because when i try to implement on my own it take too much time and still not really have all the functionality that i want. so i think don't need to reinvent the wheel and take what available now. but in the future i should just implement my own FIFO buffer and make this library less dependent on external library.
 
