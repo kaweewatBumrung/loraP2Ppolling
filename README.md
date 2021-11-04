@@ -19,12 +19,12 @@ and  keep in mind that you should check from difference source for what the rule
 The core function that we want are to polling data from each node into to master. here node mean end device and you can think of master as a kind of a gateway to the internet or user. master and node using lora P2P as a communicate link. polling here simple mean you keep asking each node about it sensor data. and we just send that data using lora P2P. but lora frame is just broadcast into air like a normal wireless does. so here in this system i design number of thing.
 - Frame format and header to know who send, who receive, and what kind of frame is it. 
 - Address, for master it will have a fix address but each node we need to be able to distinguish between each node. so we use EUI (Extended Unique Identifiers). that should be unique to every node which can be found on sticker of RAK4200 module. but it is 64 bits long which is too long. so we will have master assign 8 bits address to each node after node joined master own network and use that address for polling instead. maximum number of node are 223.
-- Network address there can be multiple networks working independently. the network itself design to be a star topology with master at the center and many nodes around it. if you want to have more than one network you can try but there are some limitation [Note](###note).
+- Network address there can be multiple networks working independently. the network itself design to be a star topology with master at the center and many nodes around it. if you want to have more than one network you can try but there are some limitation [Note](#note).
 - I choose to mimic the frequency channel ues in LoRaWAN frequency plan AS923. which i choose 9 channel at 923.2, 923.4, 923.6, 923.8, 924, 924.2, 924.4, 924.6 and 924.8MHz. this may change in the future as i look into using frequency outside of LoRaWAN to avoid interference with it.
 - Fix bandwidth at 125kHz coding rate of 4/8 and 8 symbol of preamble. you can set the spreading factor (SF) and power but once set it will be fix through the rest of operation.
 - system that use difference SF should work without interfere other system in other SF. but i don't have enough device to test how much it can tolerate.
 
-**Warning :** This is simple star topology with master-nodes and as of now specific hardware (ESP32 with RAK4200). it may not be suitable for your use case. (see [Note](###note)) I first write this library intent for personal use. but as it functionality grow i thought i should share this so it might be helpful to someone else and also to practice my skill include write all this up as well. also i am just a beginner in lora/LoRaWAN or in programming in general and this is my first repository. please forgive me if this library/code done something wrong or inefficient to your use case (or if you have trouble read my code or my english skill here are too bad). if you want to verify how it work or how to modify it you can inspect every single line of code here yourself. also before i start making this library i look around for something similar but could not find any maybe there and i just can't find it.
+**Warning :** This is simple star topology with master-nodes and as of now specific hardware (ESP32 with RAK4200). it may not be suitable for your use case. (see [Note](#note)) I first write this library intent for personal use. but as it functionality grow i thought i should share this so it might be helpful to someone else and also to practice my skill include write all this up as well. also i am just a beginner in lora/LoRaWAN or in programming in general and this is my first repository. please forgive me if this library/code done something wrong or inefficient to your use case (or if you have trouble read my code or my english skill here are too bad). if you want to verify how it work or how to modify it you can inspect every single line of code here yourself. also before i start making this library i look around for something similar but could not find any maybe there and i just can't find it.
 
 #### Frame format
 To send some data with lora we call that data payload. that can only be compose of number of full bytes. we write it to be string of hexadecimal number. we will call payload frame from now. frame can be divide into header and data/EUI
@@ -38,7 +38,7 @@ what each fields mean
 - **address sender** (addrSender) same as address receiver
 - **network address** (netAddr) are 8 bits address for every network. when master create network it will assign itself and it own node the same netAddr.
 - **frame type** (frameType) are 8 bits data that describe what frame is it. master/node will do difference thing about any frame base on what type of it and what state of master/node at that moment.
-- **data** this is the sensors data that master polling from node. fix length at 32 bits and there 3 data mix together 8 bit Batt, 12 bit moisture, 12 bit temperature. you can't change length or number of data and you might want to so see [Note](###note)
+- **data** this is the sensors data that master polling from node. fix length at 32 bits and there 3 data mix together 8 bit Batt, 12 bit moisture, 12 bit temperature. you can't change length or number of data and you might want to so see [Note](#note)
 - **EUI** are Extended Unique Identifiers we use it to distinguish between each node before it joined a network. and also when need to remove that node as well.
 
 #### Network address negotiate
@@ -414,7 +414,7 @@ void readMoisture (uint16_t& _moisture)
 - if you set it to node you have to set it EUI. and set your function that get call when waiting for master polling.
 
 > P2Ppolling.setPolling_interval(...);
-- for master you have to set polling interval. see [Polling interval](####Calculate_polling_interval) how to calculate that so you not exceed 1% duty cycle.
+- for master you have to set polling interval. see [Polling interval](#Calculate_polling_interval) how to calculate that so you not exceed 1% duty cycle.
 
 > P2Ppolling.setExled(...);
 - for node you can set Exled that will just toggle when it about to send data. i use it for debug. don't set it if you not using it.
