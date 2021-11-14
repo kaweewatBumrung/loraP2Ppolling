@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<!-- saved from url=(0041)https://descartes.co.uk/CreateEUIKey.html -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<title>Random EUI or Key generator</title>
+</head>
+<body>
+<h1>Create random EUI or Key</h1>
+
+<h3 id="type">&nbsp;</h3>
+
+
+<p id="justDigits">Click a button ...</p>
+
+<p id="justDigitsUpper">&nbsp;.</p>
+
+<p id="hexyDigitsUpper">&nbsp;</p>
+
+
+<input type="button" onclick="createEUI()" value="Create EUI"> 
+
+&nbsp;&nbsp;
+
+<input type="button" onclick="createKey()" value="Create Key"> 
+
+<hr>
+<p>This is provided as-is and your choice to use it comes with your understanding of what it does. Read <a target="_blank" href="https://www.thethingsnetwork.org/forum/t/deveui-for-non-hardware-assigned-values/2093/23?u=descartes">this TTN forum post</a> for more information.</p>
+<p>Unlicensed, do as you like.</p>
+
+<script>
+
+// Kick start this browsers random number generator
+let loop_da_loop = Math.floor(Math.random() * 100) + 25;
+for (let c = 0; c < loop_da_loop; c++) { 
+  let r = Math.random();
+}
+
+
+function createEUI() {
+
+	var EUI = [
+
+		Math.floor(Math.random() * 256),
+		Math.floor(Math.random() * 256),
+		Math.floor(Math.random() * 256),
+		Math.floor(Math.random() * 256),
+		Math.floor(Math.random() * 256),
+		Math.floor(Math.random() * 256),
+		Math.floor(Math.random() * 256),
+		Math.floor(Math.random() * 256)
+
+	];
+
+	EUI[0] = (EUI[0] & ~1) | 2;
+	
+	document.getElementById("type").innerHTML = "EUI";
+	document.getElementById("justDigits").innerHTML = justDigits(EUI);
+	document.getElementById("justDigitsUpper").innerHTML = justDigits(EUI).toUpperCase();
+	document.getElementById("hexyDigitsUpper").innerHTML = hexyDigits(EUI);
+
+}
+
+function createKey() {
+
+	var Key = [
+
+		Math.floor(Math.random() * 256),
+		Math.floor(Math.random() * 256),
+		Math.floor(Math.random() * 256),
+		Math.floor(Math.random() * 256),
+		Math.floor(Math.random() * 256),
+		Math.floor(Math.random() * 256),
+		Math.floor(Math.random() * 256),
+		Math.floor(Math.random() * 256),
+		Math.floor(Math.random() * 256),
+		Math.floor(Math.random() * 256),
+		Math.floor(Math.random() * 256),
+		Math.floor(Math.random() * 256),
+		Math.floor(Math.random() * 256),
+		Math.floor(Math.random() * 256),
+		Math.floor(Math.random() * 256),
+		Math.floor(Math.random() * 256)
+
+	];
+	
+	document.getElementById("type").innerHTML = "Key";
+	document.getElementById("justDigits").innerHTML = justDigits(Key);
+	document.getElementById("justDigitsUpper").innerHTML = justDigits(Key).toUpperCase();
+	document.getElementById("hexyDigitsUpper").innerHTML = hexyDigits(Key);
+
+}
+
+
+function justDigits(digits) {
+	let justDigits = "";
+	for (let c = 0; c < digits.length; c++) { 
+		if (digits[c] < 16) {
+			justDigits += "0";
+		}
+		justDigits += digits[c].toString(16);
+	}
+	return justDigits;
+}
+
+
+function hexyDigits(digits) {
+	let hexyDigits = "";
+	for (let c = 0; c < digits.length; c++) { 
+		hexyDigits += "0x";
+		if (digits[c] < 16) {
+			hexyDigits += "0";
+		}
+
+		hexyDigits += digits[c].toString(16).toUpperCase();
+		hexyDigits += (c != digits.length-1) ? ", " : "";
+	}
+	return hexyDigits;
+}
+
+</script>
+
+
+
+</body></html>
