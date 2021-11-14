@@ -967,7 +967,7 @@ String RAK4200::rk_recvData(void)
 bool RAK4200::rk_initP2P(String FREQ, int SF, int BW, int CR, int PRlen, int PWR)
 {
   //===============================================================================================
-  command = "at+set_config=lorap2p:" + FREQ + "," + SF + "," + BW + "," + CR + "," + PRlen + "," + PWR;
+  command = "at+set_config=lorap2p:" + FREQ + ":" + SF + ":" + BW + ":" + CR + ":" + PRlen + ":" + PWR;
   //===============================================================================================
   sendRawCommand(command);
   ret = rk_recvP2PData();

@@ -5,10 +5,21 @@ loraP2Ppolling is **NOT** using LoRaWAN [lora vs LoRaWAN][lora vs LoRaWAN link] 
 
 Why not use LoRaWAN? to use LoRaWAN that mean you have to use one of LoRaWAN network operator who have coverage at your location. like the things network or here in thailand we also have [LoRa IoT by CAT][catLoRa link]. but most of the time you will have some [restriction][ttn fair-use link] or subscription cost. In another way you can have your own Private networks but that need LoRaWAN gateway. which price start around 70$ or more for a simple indoor gateway ([TTIG][The Things Indoor Gateway link], [pygate+WiPy][pygate link]). this lead me to think about using just lora P2P for some simple network. but of cause one of the advantage of LoRaWAN are it gataway. that can work with multiple spreading factor and frequency band. but for simple small network that just collect data from multiple sensors are possible using less capability lora device. such as as normal end device type lora module which are cheaper. and this way you also have more control over your own network. this library also use external library [CircularBuffer][CircularBuffer link]
 
-**Warning :** There are local regulation [กฏ กสทช.][กฏ กสทช. link] here in thailand. you **MUST** check what are status of rule are at the time. and i might not be able to update this library or this document or this warning. always check the rule. what we using is just lora but more commonly we see this type of device using LoRaWAN so i try to understand it in the context of LoRaWAN which here in thailand are usable within 920MHz - 925MHz and for LoRaWAN it use frequency plan AS923. what i understand there 3 rule that this type of device must follow
-- **Power limit** in term of e.i.r.p. no more than 50mW which is ~17dBm. (there are more power option but you need license)
-- **Duty cycle** with in 1 hour. no more than 1%.
-- **Dwell Time** no more than 400ms. i'm not sure about what this will applied in what we will doing. dwell time is (what i think) are duration spend in single channel with a specific bandwidth in the FHSS (Frequency Hopping Spread Spectrum) system. in LoRaWAN the hopping part are (again what i think) the fact that node can send frame to gateway in multiple channel. because gateway can receive frame from multiple channel with difference spreading factor at the same time. this library also doing frequency switching. but once device create/joined network it will no longer switching between frequency any more. this is main difference of what this library do and what LoRaWAN do. maybe this is not FHSS any more. and need difference rule. but if it the same than that mean no more than 400ms time on air. which mean you can't use SF11, SF12 because minimum frame length (just bare header) is already longer than that and this applied to LoRaWAN as well [LoRaWAN air time calculator][time on air calculator link].
+**Warning :** There are local regulation [กฏ กสทช.][กฏ กสทช. link] here in thailand. you **MUST** check what are status of rule are at the time. and i might not be able to update this library or this document or this warning. always check the rule. what we using is just lora but more commonly we see this type of device using LoRaWAN. first this is what i understand it in the context of LoRaWAN which here in thailand are usable within 920MHz - 925MHz and frequency plan AS923. there are 3 rule that this type of device must follow.
+
+**For LoRaWAN**
+- **Power limit** in term of e.i.r.p. no more than 50mW which is ~17dBm (include antenna gain). there are more power option but you need license.
+- **Duty cycle** with in 1 hour. no more than 1%. or if it using FHSS with the minimum of 20 channel than duty cycle limit will be 10%.
+- **Dwell Time** (for FHSS only) no more than 400ms per 8 second. dwell time is (what i think) are duration spend in single channel with a specific bandwidth in the FHSS (Frequency Hopping Spread Spectrum) system. in LoRaWAN the hopping part are (again what i think) the fact that node can send frame to gateway in multiple channel. because gateway can receive frame from multiple channel with difference spreading factor at the same time. and the device can not use the same channel within 8 second (read more at the link above). which mean you can't use SF11, SF12 because minimum frame length (just bare header) is already longer than that [LoRaWAN air time calculator][time on air calculator link].
+
+this library also doing frequency switching. but once device create/joined network it will no longer switching between frequency any more. this is main difference of what this library do and what LoRaWAN do.
+
+**for what this library (system)**
+
+ - **Power limit** in term of e.i.r.p. no more than 50mW which is ~17dBm (include antenna gain).
+ - **Duty cycle** with in 1 hour. no more than 1%.
+
+about dwell time. from i read and understand we don't to limit time on air. but i'm not sure about this so i still limit the time on air to the same as in FHSS system.
 
 and  keep in mind that you should check from difference source for what the rule mean. do not just trust me
 
@@ -23,7 +34,7 @@ The core function that we want are to polling data from each node into to master
 
 - **Network address** there can be multiple networks working independently. the network itself design to be a star topology with master at the center and many nodes around it. if you want to have more than one network you can try but there are some limitation [Note](#note).
 
-- This library mimic the frequency channel ues in LoRaWAN frequency plan AS923. which i choose **9 channel** at 923.2MHz, 923.4MHz, 923.6MHz, 923.8MHz, 924MHz, 924.2MHz, 924.4MHz, 924.6MHz and 924.8MHz. this may change in the future as i look into using frequency outside of LoRaWAN to avoid interference with it.
+- **Frequency channel in the range of 920MHz - 923MHz.** start at 920.2MHz with channel bandwidth of 200kHz and 14 channel total. [920.2MHz, 920.4MHz, 920.6MHz, 920.8MHz, 921.0MHz, 921.2MHz, 921.4MHz, 921.6MHz, 921.8MHz, 922.0MHz, 922.2MHz, 922.4MHz, 922.6MHz, 922.8MHz].
 
 - **Fix bandwidth at 125kHz, coding rate of 4/8, and 8 symbol of preamble.** you can set the spreading factor (SF) and power but once set it will be fix through the rest of operation.
 
@@ -45,6 +56,8 @@ what each fields mean
 - **frame type** (frameType) are 8 bits data that describe what frame is it. master/node will do difference thing about any frame base on what type of frame is it and what state of master/node at that moment.
 - **data** this is the sensors data that master polling from node. it fix length of 32 bits and there 3 data mix together 8 bit Batt, 12 bit moisture, 12 bit temperature. you can't change length or number of data and you might want to so see [Note](#note)
 - **EUI** are Extended Unique Identifiers we use it to distinguish between each node before it joined a network. and also for remove node as well.
+
+![start_up_image](/README_assets/Start_up_v1_1_0.png)
 
 #### Network address negotiate
 
@@ -74,6 +87,9 @@ Master can remove node. the node will than start doing join request again. first
 The core function for both master and node is just finite state machine. it use to describe what the machine (system). that will be in one of a finite number of states at a time. and it can change from one state to another in response to some inputs (state transition). i use it to design the system as well as describe it in the table below. keep in mind that this table will be just a simplify version.
 
 **Master state machine**
+
+As of version 1.1.0
+
 <table>
 <thead>
   <tr>
@@ -187,6 +203,9 @@ The core function for both master and node is just finite state machine. it use 
 </table>
 
 **Node state machine**
+
+As of version 1.1.0
+
 <table>
 <thead>
   <tr>
@@ -275,7 +294,9 @@ The core function for both master and node is just finite state machine. it use 
 </table>
 
 ### How to use
-Sample arduino sketch
+Sample arduino sketch as of version 1.1.0
+
+**Note :** this sketch here are only for explain how to use this library. see example folder for working example.
 ```cpp
 #include "loraP2Ppolling.h"
 
@@ -327,6 +348,11 @@ void setup()
   
   // set interval (ms), if not set default to 10s (for master)
   P2Ppolling.setPolling_interval(8000);
+  
+  // set wait for Join duration (for master)
+  // if not set it will be the duration to sweep all channel + acktimeOut
+  // minimum = CH_Sweep_timeOut (1% duty of join request)
+  P2Ppolling.set_T_waitforJoin(20000);
   
   // set external led (optional) (for node)
   P2Ppolling.setExled(Exled);
@@ -421,6 +447,9 @@ void readMoisture (uint16_t& _moisture)
 > P2Ppolling.setPolling_interval(...);
 - for master you have to set polling interval. see [Polling interval](#calculate_polling_interval) how to calculate that so you not exceed 1% duty cycle.
 
+> P2Ppolling.set_T_waitforJoin(...);
+- for master you have to set the duration for master to wait for node to join before it start polling. if not set it will be the duration to sweep all channel + acktimeOut.
+
 > P2Ppolling.setExled(...);
 - for node you can set Exled that will just toggle when it about to send data. i use it for debug. don't set it if you not using it.
 
@@ -437,11 +466,11 @@ you can name it what you like **BUT** you must keep function return type (void) 
 
 **What if you can't find unique 64 bits number to use as EUI**
 
-than you should find another source of unique number or serial number. like your microcontroller unique id. or make it as random as you can. don't forgot to set the same EUI for node and master (to accept)
+than you may want to generate 64 bits number yourself. i recommend [this website][EUI generate link]. it will generate EUI with special property. keep in mind that it **NOT** guarantee to be unique but it random enough. don't forgot to set the same EUI for node and master (to accept)
 
 #### Calculate polling interval
 
-You have to make duty cycle of transmit to be within 1%. and because master will have to transmit more often than node we have to use master duty cycle of transmit. it can be calculate using the number of node you need multiply by number of frame master have to send for all the node. with specific time on air (duration to transmit frame) multiply by 99. that mean your interval have to be **at least (99 * total time on air for all transmit frame)** also each spreading factor (SF) will reduce or increase your time on air and polling interval. the polling frame and ACK frame from master are 4 bytes. and fix bandwidth at 125kHz, coding rate of 4/8 and 8 symbol of preamble. i'm **not include joining or netAddr negotiate** partly because it will be small part in normal operation (or only at the start if you system not change). but you should keep that in mind as well. the value are in the table below.
+there are limit for duty cycle that you can use. from [กฏ กสทช.][กฏ กสทช. link] it only say 1% i think that mean both transmit and receive each. in normal operation device do transmit more often than receive. so you have to make duty cycle of transmit to be within 1%. and because master will have to transmit more often than node we have to use master duty cycle of transmit. it can be calculate using the number of node you need multiply by number of frame master have to send for all the node. with specific time on air (duration to transmit frame) multiply by 99. that mean your interval have to be **at least (99 * total time on air for all transmit frame)** also each spreading factor (SF) will reduce or increase your time on air and polling interval. the polling frame and ACK frame from master are 4 bytes. and fix bandwidth at 125kHz, coding rate of 4/8 and 8 symbol of preamble. i'm **not include joining or netAddr negotiate** partly because it will be small part in normal operation (or only at the start if you system not change). but you should keep that in mind as well. the value are in the table below.
 
 (value from semtech lora modem calculator tool)
 
@@ -482,6 +511,8 @@ You have to make duty cycle of transmit to be within 1%. and because master will
 </tbody>
 </table>
 
+This duty cycle limit are for within 1 hour so if the interval after you calculate are more than 60 minute. than you **MUST** divide the network so than no any network have polling interval more than 60 minute
+
 **Example** : 
 1. if you have <ins>10 node and with ACK mode at SF 8</ins> and **if no frame loss** the total time on air are (10 node *2 frame per node * 58ms) = 1160ms the polling interval are at least 99 * 1160 = 11484ms **(114.84 second)**
 
@@ -506,7 +537,7 @@ Partly because i don't have enough knowledge to **do it correctly**. and i don't
 
 **Number of network limitation**
 
-If you just look at the number of netAddr that can be assign. it is 223. but i recommend to use no more than 9 for a single network per channel. or if you want 2 network per channel. for a total of 18 network. if there are more than 18 network there will be problem at the netAddr negotiate process. because right now if any device send netAddr asking frame. all the master that can receive this frame will answer it right away. which will cause frame collision. i want to fix this in the future by add some kind of unique time slot for each network to answer. and try to avoid frame collision as much as possible. also i want node to answer netAddr negotiate as well. because in the case of if the only device that are in the range of that master who send netAddr asking. but that master are not in the range of existing master. right now if that happen the new master might claim the same netAddr as the node. and that lead to more serious problem. i want to fix this but i can't really promise. however as you are the one who setup the network yourself. you should make big network instead of many small network. or limit it to no more than 18 network for now.
+If you just look at the number of netAddr that can be assign. it is 223. but i recommend to use no more than 14 for a single network per channel. or if you want 2 network per channel. for a total of 28 network. if there are more than 28 network there will be problem at the netAddr negotiate process. because right now if any device send netAddr asking frame. all the master that can receive this frame will answer it right away. which will cause frame collision. i want to fix this in the future by add some kind of unique time slot for each network to answer. and try to avoid frame collision as much as possible. also i want node to answer netAddr negotiate as well. because in the case of if the only device that are in the range of that master who send netAddr asking. but that master are not in the range of existing master. right now if that happen the new master might claim the same netAddr as the node. and that lead to more serious problem. i want to fix this but i can't really promise. however as you are the one who setup the network yourself. you should make big network instead of many small network. or limit it to no more than 28 network for now.
 
 **Compatible hardware limitation**
 
@@ -527,11 +558,9 @@ I am probably the only one who read all this. so i will use space here for note 
 	- send frame (RakLoRa.rk_sendP2PData)
 	- receive frame (it just read back at_command from RAK4200) (RakLoRa.rk_recvP2PData)
 	
-- look into use another frequency range instead of mimic LoRaWAN AS923. i think about using 920MHz - 923MHz. with that i can have 15 channel. and also maybe i can reduce channel bandwidth to only 150kHz to increase number of channel further to 20 as well.
+![spectrum_image](/README_assets/RTL-SDR_crop_v2.png)
 
-![spectrum_image](/README_assets/RTL-SDR_crop.png)
-
-this is the spectrum of all 9 channel. from RTL-SDR using SDR# program
+this is the spectrum of all the channel. from RTL-SDR using SDR# program (from 2 screen capture)
 
 - the data that node send to master are fix in the number of fields and length. i should add a method to set the data format at compile time. and than set the same data format for all the master and node but right now i still learning how to do something like that. so again i can't promise that i will add that functionality.
 
@@ -558,3 +587,5 @@ this is the spectrum of all 9 channel. from RTL-SDR using SDR# program
 [time on air calculator link]: https://avbentem.github.io/airtime-calculator/ttn/as923
 
 [ETT RAK4200 link]: http://www.etteam.com/prodIOT/LORA-RAK4200-AS923-MODULE/index.html
+
+[EUI generate link]: https://descartes.co.uk/CreateEUIKey.html

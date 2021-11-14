@@ -3,17 +3,17 @@
 
 /*
   loraP2Ppolling.h
-  part of loraP2Ppolling arduino library v 1.0.0
-  write by: kaweewat bumrung
-  date 4/11/2021 (dd/mm/yyyy)
+  Part of loraP2Ppolling arduino library version 1.1.0
+  Author: kaweewat bumrung
+  date: 4/11/2021 (dd/mm/yyyy)
   arduino IDE 1.8.15
-  arduino ESP32 core 1.0.6
+  ESP32 arduino core 2.0.1
 
   to use with ESP32 and RAK4200
 
   hardware from ETT
   http://www.etteam.com/prodIOT/LORA-RAK4200-AS923-MODULE/index.html
-  version 1.0.0
+  this file version 1.1.0
 */
 
 #ifndef loraP2Ppolling_h
@@ -53,6 +53,9 @@ class P2PpollingClass
 
     // set exled pin
     void setExled (int _Exled);
+
+    // set wait for Join duration
+    bool set_T_waitforJoin (uint32_t _ms);
 
     // set interval between polling
     bool setPolling_interval (uint32_t _ms);
@@ -196,8 +199,9 @@ class P2PpollingClass
     int         nodeRemove_flag = 0;
     uint8_t     _fix_masterAddr = 16;  // master addr fix at 16
 
-    int         startMainloop;
+    int         startMainloop = 0;
     uint32_t    timeStamp_loop;
+    uint32_t    T_waitforJoin;
     uint8_t     addrCurrentnode;
     int         tonextNode;
     uint8_t     addrToRemove;

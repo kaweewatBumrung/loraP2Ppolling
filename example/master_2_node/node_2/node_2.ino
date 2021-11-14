@@ -1,7 +1,7 @@
 /*
   write by: kaweewat bumrung
-  1/11/2021 dd/mm/yyyy
-  loraP2Ppolling library version 1.0.0
+  13/11/2021 dd/mm/yyyy
+  loraP2Ppolling library version 1.1.0
 */
 
 #include "loraP2Ppolling.h"
@@ -65,7 +65,7 @@ void readBatt (uint8_t& _batt)
 
   // here this is only a dummy for simple testing the library
   _batt = 255;
-  Serial.println("fix batt 255");
+  //Serial.println("fix batt 255");
 }
 
 // function get call when node waiting for master (State 1)
@@ -77,7 +77,7 @@ void readTemp (uint16_t& _temperature)
 
   // here this is only a dummy for simple testing the library
   _temperature = random(0, 2000);
-  Serial.println("(random)temp : " + (String)_temperature);
+  //Serial.println("(random)temp : " + (String)_temperature);
 }
 
 // function get call when node waiting for master (State 1)
@@ -89,5 +89,5 @@ void readMoisture (uint16_t& _moisture)
 
   // here this is only a dummy for simple testing the library
   _moisture = random(0, 2000);
-  Serial.println("(random)moisture : " + (String)_moisture);
+  //Serial.println("(random)moisture : " + (String)_moisture);
 }

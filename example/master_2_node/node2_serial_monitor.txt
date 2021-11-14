@@ -1,759 +1,124 @@
-20:20:15.759 -> fix batt 255
-20:20:15.759 -> (random)temp : 1171
-20:20:15.759 -> (random)moisture : 267
-20:20:15.775 -> fix batt 255
-20:20:15.775 -> (random)temp : 755
-20:20:15.775 -> (random)moisture : 1997
-20:20:15.822 -> fix batt 255
-20:20:15.822 -> (random)temp : 1676
-20:20:15.822 -> (random)moisture : 1646
-20:20:15.822 -> fix batt 255
-20:20:15.822 -> (random)temp : 1398
-20:20:15.822 -> (random)moisture : 1826
-20:20:15.868 -> fix batt 255
-20:20:15.868 -> (random)temp : 680
-20:20:15.868 -> (random)moisture : 1861
-20:20:15.915 -> fix batt 255
-20:20:15.915 -> (random)temp : 1158
-20:20:15.915 -> (random)moisture : 1392
-20:20:15.915 -> fix batt 255
-20:20:15.915 -> (random)temp : 1251
-20:20:15.915 -> (random)moisture : 7
-20:20:15.962 -> fix batt 255
-20:20:15.962 -> (random)temp : 652
-20:20:15.962 -> (random)moisture : 1909
-20:20:15.962 -> fix batt 255
-20:20:15.962 -> (random)temp : 1999
-20:20:15.962 -> (random)moisture : 342
-20:20:16.009 -> fix batt 255
-20:20:16.009 -> (random)temp : 1000
-20:20:16.009 -> (random)moisture : 1980
-20:20:16.009 -> fix batt 255
-20:20:16.009 -> (random)temp : 688
-20:20:16.009 -> (random)moisture : 598
-20:20:16.056 -> fix batt 255
-20:20:16.056 -> (random)temp : 1912
-20:20:16.056 -> (random)moisture : 1322
-20:20:16.103 -> fix batt 255
-20:20:16.103 -> (random)temp : 694
-20:20:16.103 -> (random)moisture : 1311
-20:20:16.103 -> fix batt 255
-20:20:16.103 -> (random)temp : 1930
-20:20:16.103 -> (random)moisture : 221
-20:20:16.150 -> fix batt 255
-20:20:16.150 -> (random)temp : 16
-20:20:16.150 -> (random)moisture : 277
-20:20:16.150 -> fix batt 255
-20:20:16.150 -> (random)temp : 370
-20:20:16.150 -> (random)moisture : 13
-20:20:16.197 -> fix batt 255
-20:20:16.197 -> (random)temp : 563
-20:20:16.197 -> (random)moisture : 925
-20:20:16.197 -> fix batt 255
-20:20:16.243 -> (random)temp : 1381
-20:20:16.243 -> (random)moisture : 343
-20:20:16.243 -> fix batt 255
-20:20:16.243 -> (random)temp : 1054
-20:20:16.243 -> (random)moisture : 1277
-20:20:16.290 -> fix batt 255
-20:20:16.290 -> (random)temp : 1520
-20:20:16.290 -> (random)moisture : 691
-20:20:16.290 -> fix batt 255
-20:20:16.290 -> (random)temp : 936
-20:20:16.290 -> (random)moisture : 1765
-20:20:16.337 -> fix batt 255
-20:20:16.337 -> (random)temp : 1617
-20:20:16.337 -> (random)moisture : 1295
-20:20:16.337 -> fix batt 255
-20:20:16.337 -> (random)temp : 1769
-20:20:16.337 -> (random)moisture : 420
-20:20:16.384 -> fix batt 255
-20:20:16.384 -> (random)temp : 1027
-20:20:16.384 -> (random)moisture : 1118
-20:20:16.431 -> fix batt 255
-20:20:16.431 -> (random)temp : 656
-20:20:16.431 -> (random)moisture : 1733
-20:20:16.431 -> fix batt 255
-20:20:16.431 -> (random)temp : 836
-20:20:16.431 -> (random)moisture : 1348
-20:20:16.478 -> fix batt 255
-20:20:16.478 -> (random)temp : 1526
-20:20:16.478 -> (random)moisture : 12
-20:20:16.478 -> fix batt 255
-20:20:16.478 -> (random)temp : 275
-20:20:16.478 -> (random)moisture : 537
-20:20:16.525 -> fix batt 255
-20:20:16.525 -> (random)temp : 1747
-20:20:16.525 -> (random)moisture : 1072
-20:20:16.525 -> fix batt 255
-20:20:16.525 -> (random)temp : 579
-20:20:16.525 -> (random)moisture : 1759
-20:20:16.572 -> fix batt 255
-20:20:16.572 -> (random)temp : 1578
-20:20:16.572 -> (random)moisture : 597
-20:20:16.618 -> fix batt 255
-20:20:16.618 -> (random)temp : 63
-20:20:16.618 -> (random)moisture : 1226
-20:20:16.618 -> fix batt 255
-20:20:16.618 -> (random)temp : 571
-20:20:16.618 -> (random)moisture : 695
-20:20:16.665 -> fix batt 255
-20:20:16.665 -> (random)temp : 1210
-20:20:16.665 -> (random)moisture : 1502
-20:20:16.665 -> fix batt 255
-20:20:16.665 -> (random)temp : 1789
-20:20:16.665 -> (random)moisture : 1979
-20:20:16.712 -> fix batt 255
-20:20:16.712 -> (random)temp : 75
-20:20:16.712 -> (random)moisture : 989
-20:20:16.712 -> fix batt 255
-20:20:16.712 -> (random)temp : 1991
-20:20:16.712 -> (random)moisture : 1947
-20:20:16.759 -> fix batt 255
-20:20:16.759 -> (random)temp : 1451
-20:20:16.759 -> (random)moisture : 1624
-20:20:16.806 -> fix batt 255
-20:20:16.806 -> (random)temp : 905
-20:20:16.806 -> (random)moisture : 233
-20:20:16.806 -> fix batt 255
-20:20:16.806 -> (random)temp : 1738
-20:20:16.806 -> (random)moisture : 1709
-20:20:16.853 -> fix batt 255
-20:20:16.853 -> (random)temp : 235
-20:20:16.853 -> (random)moisture : 1500
-20:20:16.853 -> fix batt 255
-20:20:16.853 -> (random)temp : 121
-20:20:16.853 -> (random)moisture : 1932
-20:20:16.884 -> fix batt 255
-20:20:16.884 -> (random)temp : 1075
-20:20:16.884 -> (random)moisture : 43
-20:20:16.884 -> fix batt 255
-20:20:16.931 -> (random)temp : 289
-20:20:16.931 -> (random)moisture : 1393
-20:20:16.931 -> fix batt 255
-20:20:16.931 -> (random)temp : 965
-20:20:16.931 -> (random)moisture : 452
-20:20:16.978 -> fix batt 255
-20:20:16.978 -> (random)temp : 321
-20:20:16.978 -> (random)moisture : 491
-20:20:17.025 -> fix batt 255
-20:20:17.025 -> (random)temp : 548
-20:20:17.025 -> (random)moisture : 848
-20:20:17.025 -> fix batt 255
-20:20:17.025 -> (random)temp : 526
-20:20:17.025 -> (random)moisture : 1485
-20:20:17.071 -> fix batt 255
-20:20:17.071 -> (random)temp : 99
-20:20:17.071 -> (random)moisture : 64
-20:20:17.071 -> fix batt 255
-20:20:17.071 -> (random)temp : 1195
-20:20:17.071 -> (random)moisture : 273
-20:20:17.118 -> fix batt 255
-20:20:17.118 -> (random)temp : 313
-20:20:17.118 -> (random)moisture : 633
-20:20:17.118 -> fix batt 255
-20:20:17.118 -> (random)temp : 200
-20:20:17.118 -> (random)moisture : 1508
-20:20:17.165 -> fix batt 255
-20:20:17.165 -> (random)temp : 1529
-20:20:17.165 -> (random)moisture : 780
-20:20:17.212 -> fix batt 255
-20:20:17.212 -> (random)temp : 95
-20:20:17.212 -> (random)moisture : 1528
-20:20:17.212 -> fix batt 255
-20:20:17.212 -> (random)temp : 485
-20:20:17.212 -> (random)moisture : 1895
-20:20:17.259 -> fix batt 255
-20:20:17.259 -> (random)temp : 1592
-20:20:17.259 -> (random)moisture : 1235
-20:20:17.259 -> fix batt 255
-20:20:17.259 -> (random)temp : 432
-20:20:17.259 -> (random)moisture : 1235
-20:20:17.306 -> fix batt 255
-20:20:17.306 -> (random)temp : 404
-20:20:17.306 -> (random)moisture : 1319
-20:20:17.306 -> fix batt 255
-20:20:17.306 -> (random)temp : 1674
-20:20:17.353 -> (random)moisture : 1684
-20:20:17.353 -> fix batt 255
-20:20:17.353 -> (random)temp : 1711
-20:20:17.353 -> (random)moisture : 566
-20:20:17.400 -> fix batt 255
-20:20:17.400 -> (random)temp : 69
-20:20:17.400 -> (random)moisture : 596
-20:20:17.400 -> fix batt 255
-20:20:17.400 -> (random)temp : 1261
-20:20:17.400 -> (random)moisture : 1580
-20:20:17.446 -> fix batt 255
-20:20:17.446 -> (random)temp : 853
-20:20:17.446 -> (random)moisture : 1062
-20:20:17.446 -> fix batt 255
-20:20:17.446 -> (random)temp : 923
-20:20:17.446 -> (random)moisture : 322
-20:20:17.493 -> fix batt 255
-20:20:17.493 -> (random)temp : 897
-20:20:17.493 -> (random)moisture : 1871
-20:20:17.493 -> fix batt 255
-20:20:17.493 -> (random)temp : 1616
-20:20:17.540 -> (random)moisture : 1549
-20:20:17.540 -> fix batt 255
-20:20:17.540 -> (random)temp : 1866
-20:20:17.540 -> (random)moisture : 317
-20:20:17.587 -> fix batt 255
-20:20:17.587 -> (random)temp : 642
-20:20:17.587 -> (random)moisture : 1355
-20:20:17.587 -> fix batt 255
-20:20:17.587 -> (random)temp : 1064
-20:20:17.587 -> (random)moisture : 1813
-20:20:17.634 -> fix batt 255
-20:20:17.634 -> (random)temp : 1251
-20:20:17.634 -> (random)moisture : 1390
-20:20:17.634 -> fix batt 255
-20:20:17.634 -> (random)temp : 1405
-20:20:17.634 -> (random)moisture : 620
-20:20:17.681 -> fix batt 255
-20:20:17.681 -> (random)temp : 1566
-20:20:17.681 -> (random)moisture : 1164
-20:20:17.681 -> fix batt 255
-20:20:17.728 -> (random)temp : 1589
-20:20:17.728 -> (random)moisture : 1867
-20:20:17.728 -> fix batt 255
-20:20:17.728 -> (random)temp : 1846
-20:20:17.728 -> (random)moisture : 1985
-20:20:17.775 -> fix batt 255
-20:20:17.775 -> (random)temp : 384
-20:20:17.775 -> (random)moisture : 1355
-20:20:17.775 -> fix batt 255
-20:20:17.775 -> (random)temp : 679
-20:20:17.775 -> (random)moisture : 1288
-20:20:17.811 -> fix batt 255
-20:20:17.811 -> (random)temp : 790
-20:20:17.811 -> (random)moisture : 720
-20:20:17.858 -> fix batt 255
-20:20:17.858 -> (random)temp : 1676
-20:20:17.858 -> (random)moisture : 1195
-20:20:17.858 -> fix batt 255
-20:20:17.858 -> (random)temp : 16
-20:20:17.858 -> (random)moisture : 129
-20:20:17.905 -> fix batt 255
-20:20:17.905 -> (random)temp : 1114
-20:20:17.905 -> (random)moisture : 1614
-20:20:17.905 -> fix batt 255
-20:20:17.905 -> (random)temp : 380
-20:20:17.905 -> (random)moisture : 1780
-20:20:17.952 -> fix batt 255
-20:20:17.952 -> (random)temp : 84
-20:20:17.952 -> (random)moisture : 585
-20:20:17.952 -> fix batt 255
-20:20:17.952 -> (random)temp : 299
-20:20:17.998 -> (random)moisture : 508
-20:20:17.998 -> fix batt 255
-20:20:17.998 -> (random)temp : 388
-20:20:17.998 -> (random)moisture : 1332
-20:20:18.045 -> fix batt 255
-20:20:18.045 -> (random)temp : 779
-20:20:18.045 -> (random)moisture : 1764
-20:20:18.045 -> fix batt 255
-20:20:18.045 -> (random)temp : 1930
-20:20:18.045 -> (random)moisture : 44
-20:20:18.092 -> fix batt 255
-20:20:18.092 -> (random)temp : 1761
-20:20:18.092 -> (random)moisture : 1935
-20:20:18.092 -> fix batt 255
-20:20:18.092 -> (random)temp : 799
-20:20:18.092 -> (random)moisture : 1758
-20:20:18.139 -> fix batt 255
-20:20:18.139 -> (random)temp : 1356
-20:20:18.139 -> (random)moisture : 1494
-20:20:18.186 -> fix batt 255
-20:20:18.186 -> (random)temp : 313
-20:20:18.186 -> (random)moisture : 1440
-20:20:18.186 -> fix batt 255
-20:20:18.186 -> (random)temp : 63
-20:20:18.186 -> (random)moisture : 360
-20:20:18.233 -> fix batt 255
-20:20:18.233 -> (random)temp : 1509
-20:20:18.233 -> (random)moisture : 515
-20:20:18.233 -> fix batt 255
-20:20:18.233 -> (random)temp : 573
-20:20:18.233 -> (random)moisture : 186
-20:20:18.280 -> fix batt 255
-20:20:18.280 -> (random)temp : 1271
-20:20:18.280 -> (random)moisture : 258
-20:20:18.280 -> fix batt 255
-20:20:18.280 -> (random)temp : 1101
-20:20:18.280 -> (random)moisture : 593
-20:20:18.327 -> fix batt 255
-20:20:18.327 -> (random)temp : 960
-20:20:18.327 -> (random)moisture : 1937
-20:20:18.373 -> fix batt 255
-20:20:18.373 -> (random)temp : 1425
-20:20:18.373 -> (random)moisture : 1664
-20:20:18.373 -> fix batt 255
-20:20:18.373 -> (random)temp : 427
-20:20:18.373 -> (random)moisture : 67
-20:20:18.420 -> fix batt 255
-20:20:18.420 -> (random)temp : 1374
-20:20:18.420 -> (random)moisture : 766
-20:20:18.420 -> fix batt 255
-20:20:18.420 -> (random)temp : 434
-20:20:18.420 -> (random)moisture : 1563
-20:20:18.467 -> fix batt 255
-20:20:18.467 -> (random)temp : 597
-20:20:18.467 -> (random)moisture : 212
-20:20:18.467 -> fix batt 255
-20:20:18.467 -> (random)temp : 1292
-20:20:18.467 -> (random)moisture : 1012
-20:20:18.514 -> fix batt 255
-20:20:18.514 -> (random)temp : 871
-20:20:18.514 -> (random)moisture : 973
-20:20:18.561 -> fix batt 255
-20:20:18.561 -> (random)temp : 325
-20:20:18.561 -> (random)moisture : 1073
-20:20:18.561 -> fix batt 255
-20:20:18.561 -> (random)temp : 735
-20:20:18.561 -> (random)moisture : 1559
-20:20:18.608 -> fix batt 255
-20:20:18.608 -> (random)temp : 250
-20:20:18.608 -> (random)moisture : 1270
-20:20:18.608 -> fix batt 255
-20:20:18.608 -> (random)temp : 201
-20:20:18.608 -> (random)moisture : 67
-20:20:18.661 -> fix batt 255
-20:20:18.661 -> (random)temp : 1679
-20:20:18.661 -> (random)moisture : 1649
-20:20:18.661 -> fix batt 255
-20:20:18.661 -> (random)temp : 1094
-20:20:18.661 -> (random)moisture : 853
-20:20:18.708 -> fix batt 255
-20:20:18.708 -> (random)temp : 561
-20:20:18.708 -> (random)moisture : 1085
-20:20:18.708 -> fix batt 255
-20:20:18.708 -> (random)temp : 767
-20:20:18.755 -> (random)moisture : 1341
-20:20:18.755 -> fix batt 255
-20:20:18.755 -> (random)temp : 1364
-20:20:18.755 -> (random)moisture : 269
-20:20:18.802 -> fix batt 255
-20:20:18.802 -> (random)temp : 1938
-20:20:18.802 -> (random)moisture : 1414
-20:20:18.802 -> fix batt 255
-20:20:18.802 -> (random)temp : 1400
-20:20:18.802 -> (random)moisture : 1590
-20:20:18.848 -> fix batt 255
-20:20:18.848 -> (random)temp : 806
-20:20:18.848 -> (random)moisture : 1465
-20:20:18.848 -> fix batt 255
-20:20:18.848 -> (random)temp : 1643
-20:20:18.848 -> (random)moisture : 1368
-20:20:18.895 -> fix batt 255
-20:20:18.895 -> (random)temp : 1206
-20:20:18.895 -> (random)moisture : 805
-20:20:18.895 -> fix batt 255
-20:20:18.942 -> (random)temp : 1658
-20:20:18.942 -> (random)moisture : 1942
-20:20:18.942 -> fix batt 255
-20:20:18.942 -> (random)temp : 1555
-20:20:18.942 -> (random)moisture : 1469
-20:20:18.989 -> fix batt 255
-20:20:18.989 -> (random)temp : 1522
-20:20:18.989 -> (random)moisture : 1215
-20:20:18.989 -> fix batt 255
-20:20:18.989 -> (random)temp : 723
-20:20:18.989 -> (random)moisture : 1818
-20:20:19.036 -> fix batt 255
-20:20:19.036 -> (random)temp : 946
-20:20:19.036 -> (random)moisture : 1288
-20:20:19.036 -> fix batt 255
-20:20:19.036 -> (random)temp : 479
-20:20:19.036 -> (random)moisture : 256
-20:20:19.083 -> fix batt 255
-20:20:19.083 -> (random)temp : 1163
-20:20:19.083 -> (random)moisture : 1213
-20:20:19.130 -> fix batt 255
-20:20:19.130 -> (random)temp : 882
-20:20:19.130 -> (random)moisture : 906
-20:20:19.130 -> fix batt 255
-20:20:19.130 -> (random)temp : 890
-20:20:19.130 -> (random)moisture : 1029
-20:20:19.177 -> fix batt 255
-20:20:19.177 -> (random)temp : 1354
-20:20:19.177 -> (random)moisture : 1990
-20:20:19.177 -> fix batt 255
-20:20:19.177 -> (random)temp : 957
-20:20:19.177 -> (random)moisture : 139
-20:20:19.223 -> fix batt 255
-20:20:19.223 -> (random)temp : 1476
-20:20:19.223 -> (random)moisture : 874
-20:20:19.223 -> fix batt 255
-20:20:19.223 -> (random)temp : 185
-20:20:19.223 -> (random)moisture : 79
-20:20:19.270 -> fix batt 255
-20:20:19.270 -> (random)temp : 974
-20:20:19.270 -> (random)moisture : 1530
-20:20:19.317 -> fix batt 255
-20:20:19.317 -> (random)temp : 105
-20:20:19.317 -> (random)moisture : 1627
-20:20:19.317 -> fix batt 255
-20:20:19.317 -> (random)temp : 1645
-20:20:19.317 -> (random)moisture : 329
-20:20:19.364 -> fix batt 255
-20:20:19.364 -> (random)temp : 631
-20:20:19.364 -> (random)moisture : 1965
-20:20:19.364 -> fix batt 255
-20:20:19.364 -> (random)temp : 321
-20:20:19.364 -> (random)moisture : 1636
-20:20:19.411 -> fix batt 255
-20:20:19.411 -> (random)temp : 1491
-20:20:19.411 -> (random)moisture : 471
-20:20:19.411 -> fix batt 255
-20:20:19.411 -> (random)temp : 794
-20:20:19.458 -> (random)moisture : 1970
-20:20:19.458 -> fix batt 255
-20:20:19.458 -> (random)temp : 1137
-20:20:19.458 -> (random)moisture : 399
-20:20:19.505 -> fix batt 255
-20:20:19.505 -> (random)temp : 1468
-20:20:19.505 -> (random)moisture : 944
-20:20:19.505 -> fix batt 255
-20:20:19.505 -> (random)temp : 1956
-20:20:19.505 -> (random)moisture : 1629
-20:20:19.551 -> fix batt 255
-20:20:19.551 -> (random)temp : 1141
-20:20:19.551 -> (random)moisture : 345
-20:20:19.551 -> fix batt 255
-20:20:19.551 -> (random)temp : 1490
-20:20:19.551 -> (random)moisture : 679
-20:20:19.598 -> fix batt 255
-20:20:19.598 -> (random)temp : 1301
-20:20:19.598 -> (random)moisture : 1665
-20:20:19.598 -> fix batt 255
-20:20:19.645 -> (random)temp : 1669
-20:20:19.645 -> (random)moisture : 106
-20:20:19.645 -> fix batt 255
-20:20:19.645 -> (random)temp : 1883
-20:20:19.645 -> (random)moisture : 939
-20:20:19.692 -> fix batt 255
-20:20:19.692 -> (random)temp : 1318
-20:20:19.692 -> (random)moisture : 1738
-20:20:19.692 -> fix batt 255
-20:20:19.692 -> (random)temp : 1831
-20:20:19.692 -> (random)moisture : 862
-20:20:19.739 -> fix batt 255
-20:20:19.739 -> (random)temp : 262
-20:20:19.739 -> (random)moisture : 94
-20:20:19.739 -> fix batt 255
-20:20:19.739 -> (random)temp : 770
-20:20:19.739 -> (random)moisture : 1384
-20:20:19.786 -> fix batt 255
-20:20:19.786 -> (random)temp : 138
-20:20:19.786 -> (random)moisture : 1947
-20:20:19.833 -> fix batt 255
-20:20:19.833 -> (random)temp : 1740
-20:20:19.833 -> (random)moisture : 201
-20:20:19.833 -> fix batt 255
-20:20:19.833 -> (random)temp : 1776
-20:20:19.833 -> (random)moisture : 1340
-20:20:19.880 -> fix batt 255
-20:20:19.880 -> (random)temp : 1136
-20:20:19.880 -> (random)moisture : 1382
-20:20:19.880 -> fix batt 255
-20:20:19.880 -> (random)temp : 388
-20:20:19.880 -> (random)moisture : 110
-20:20:19.926 -> fix batt 255
-20:20:19.926 -> (random)temp : 1142
-20:20:19.926 -> (random)moisture : 1288
-20:20:19.926 -> fix batt 255
-20:20:19.926 -> (random)temp : 472
-20:20:19.926 -> (random)moisture : 985
-20:20:19.973 -> fix batt 255
-20:20:19.973 -> (random)temp : 793
-20:20:19.973 -> (random)moisture : 1733
-20:20:20.020 -> fix batt 255
-20:20:20.020 -> (random)temp : 1913
-20:20:20.020 -> (random)moisture : 1086
-20:20:20.020 -> fix batt 255
-20:20:20.020 -> (random)temp : 1107
-20:20:20.020 -> (random)moisture : 62
-20:20:20.067 -> fix batt 255
-20:20:20.067 -> (random)temp : 1413
-20:20:20.067 -> (random)moisture : 717
-20:20:20.067 -> fix batt 255
-20:20:20.067 -> (random)temp : 68
-20:20:20.067 -> (random)moisture : 1941
-20:20:20.114 -> fix batt 255
-20:20:20.114 -> (random)temp : 197
-20:20:20.114 -> (random)moisture : 589
-20:20:20.114 -> fix batt 255
-20:20:20.114 -> (random)temp : 415
-20:20:20.114 -> (random)moisture : 501
-20:20:20.161 -> fix batt 255
-20:20:20.161 -> (random)temp : 1125
-20:20:20.161 -> (random)moisture : 1775
-20:20:20.208 -> fix batt 255
-20:20:20.208 -> (random)temp : 1428
-20:20:20.208 -> (random)moisture : 884
-20:20:20.208 -> fix batt 255
-20:20:20.208 -> (random)temp : 110
-20:20:20.208 -> (random)moisture : 1192
-20:20:20.255 -> fix batt 255
-20:20:20.255 -> (random)temp : 1110
-20:20:20.255 -> (random)moisture : 1721
-20:20:20.255 -> fix batt 255
-20:20:20.255 -> (random)temp : 1123
-20:20:20.255 -> (random)moisture : 607
-20:20:20.301 -> fix batt 255
-20:20:20.301 -> (random)temp : 58
-20:20:20.301 -> (random)moisture : 1557
-20:20:20.301 -> fix batt 255
-20:20:20.301 -> (random)temp : 160
-20:20:20.348 -> (random)moisture : 1767
-20:20:20.348 -> fix batt 255
-20:20:20.348 -> (random)temp : 1103
-20:20:20.348 -> (random)moisture : 1343
-20:20:20.395 -> fix batt 255
-20:20:20.395 -> (random)temp : 1651
-20:20:20.395 -> (random)moisture : 52
-20:20:20.395 -> fix batt 255
-20:20:20.395 -> (random)temp : 1631
-20:20:20.395 -> (random)moisture : 30
-20:20:20.442 -> fix batt 255
-20:20:20.442 -> (random)temp : 931
-20:20:20.442 -> (random)moisture : 697
-20:20:20.442 -> fix batt 255
-20:20:20.442 -> (random)temp : 1149
-20:20:20.442 -> (random)moisture : 461
-20:20:20.489 -> fix batt 255
-20:20:20.489 -> (random)temp : 1564
-20:20:20.489 -> (random)moisture : 1644
-20:20:20.489 -> fix batt 255
-20:20:20.536 -> (random)temp : 800
-20:20:20.536 -> (random)moisture : 1659
-20:20:20.536 -> fix batt 255
-20:20:20.536 -> (random)temp : 191
-20:20:20.536 -> (random)moisture : 1930
-20:20:20.583 -> fix batt 255
-20:20:20.583 -> (random)temp : 1413
-20:20:20.583 -> (random)moisture : 1521
-20:20:20.583 -> fix batt 255
-20:20:20.583 -> (random)temp : 1992
-20:20:20.583 -> (random)moisture : 1859
-20:20:20.630 -> fix batt 255
-20:20:20.630 -> (random)temp : 1810
-20:20:20.630 -> (random)moisture : 391
-20:20:20.630 -> fix batt 255
-20:20:20.630 -> (random)temp : 1541
-20:20:20.630 -> (random)moisture : 380
-20:20:20.676 -> fix batt 255
-20:20:20.676 -> (random)temp : 131
-20:20:20.676 -> (random)moisture : 470
-20:20:20.723 -> fix batt 255
-20:20:20.723 -> (random)temp : 1201
-20:20:20.723 -> (random)moisture : 872
-20:20:20.723 -> fix batt 255
-20:20:20.723 -> (random)temp : 612
-20:20:20.723 -> (random)moisture : 947
-20:20:20.770 -> fix batt 255
-20:20:20.770 -> (random)temp : 1803
-20:20:20.770 -> (random)moisture : 1334
-20:20:20.770 -> fix batt 255
-20:20:20.770 -> (random)temp : 890
-20:20:20.770 -> (random)moisture : 176
-20:20:20.817 -> fix batt 255
-20:20:20.817 -> (random)temp : 1833
-20:20:20.817 -> (random)moisture : 1254
-20:20:20.817 -> fix batt 255
-20:20:20.817 -> (random)temp : 449
-20:20:20.817 -> (random)moisture : 678
-20:20:20.864 -> fix batt 255
-20:20:20.864 -> (random)temp : 1280
-20:20:20.864 -> (random)moisture : 420
-20:20:20.911 -> fix batt 255
-20:20:20.911 -> (random)temp : 1816
-20:20:20.911 -> (random)moisture : 1980
-20:20:20.911 -> fix batt 255
-20:20:20.911 -> (random)temp : 43
-20:20:20.911 -> (random)moisture : 402
-20:20:20.958 -> fix batt 255
-20:20:20.958 -> (random)temp : 138
-20:20:20.958 -> (random)moisture : 378
-20:20:20.958 -> fix batt 255
-20:20:20.958 -> (random)temp : 511
-20:20:20.958 -> (random)moisture : 1535
-20:20:21.005 -> fix batt 255
-20:20:21.005 -> (random)temp : 1240
-20:20:21.005 -> (random)moisture : 1596
-20:20:21.005 -> fix batt 255
-20:20:21.005 -> (random)temp : 62
-20:20:21.005 -> (random)moisture : 120
-20:20:21.051 -> fix batt 255
-20:20:21.051 -> (random)temp : 1393
-20:20:21.051 -> (random)moisture : 1822
-20:20:21.098 -> fix batt 255
-20:20:21.098 -> (random)temp : 487
-20:20:21.098 -> (random)moisture : 1311
-20:20:21.098 -> fix batt 255
-20:20:21.098 -> (random)temp : 1466
-20:20:21.098 -> (random)moisture : 1367
-20:20:21.145 -> fix batt 255
-20:20:21.145 -> (random)temp : 1467
-20:20:21.145 -> (random)moisture : 1896
-20:20:21.145 -> fix batt 255
-20:20:21.145 -> (random)temp : 1834
-20:20:21.145 -> (random)moisture : 135
-20:20:21.192 -> fix batt 255
-20:20:21.192 -> (random)temp : 1454
-20:20:21.192 -> (random)moisture : 1512
-20:20:21.192 -> fix batt 255
-20:20:21.192 -> (random)temp : 115
-20:20:21.239 -> (random)moisture : 66
-20:20:21.239 -> fix batt 255
-20:20:21.239 -> (random)temp : 695
-20:20:21.239 -> (random)moisture : 1835
-20:20:21.286 -> fix batt 255
-20:20:21.286 -> (random)temp : 733
-20:20:21.286 -> (random)moisture : 1810
-20:20:21.286 -> fix batt 255
-20:20:21.286 -> (random)temp : 1032
-20:20:21.286 -> (random)moisture : 1904
-20:20:21.333 -> fix batt 255
-20:20:21.333 -> (random)temp : 1582
-20:20:21.333 -> (random)moisture : 937
-20:20:21.333 -> fix batt 255
-20:20:21.333 -> (random)temp : 68
-20:20:21.333 -> (random)moisture : 674
-20:20:21.379 -> fix batt 255
-20:20:21.379 -> (random)temp : 245
-20:20:21.379 -> (random)moisture : 188
-20:20:21.379 -> fix batt 255
-20:20:21.426 -> (random)temp : 1622
-20:20:21.426 -> (random)moisture : 1252
-20:20:21.426 -> fix batt 255
-20:20:21.426 -> (random)temp : 590
-20:20:21.426 -> (random)moisture : 925
-20:20:21.473 -> fix batt 255
-20:20:21.473 -> (random)temp : 1628
-20:20:21.473 -> (random)moisture : 692
-20:20:21.473 -> fix batt 255
-20:20:21.473 -> (random)temp : 969
-20:20:21.473 -> (random)moisture : 620
-20:20:21.520 -> fix batt 255
-20:20:21.520 -> (random)temp : 1563
-20:20:21.520 -> (random)moisture : 846
-20:20:21.520 -> fix batt 255
-20:20:21.520 -> (random)temp : 785
-20:20:21.520 -> (random)moisture : 373
-20:20:21.567 -> fix batt 255
-20:20:21.567 -> (random)temp : 1374
-20:20:21.567 -> (random)moisture : 1641
-20:20:21.614 -> fix batt 255
-20:20:21.614 -> (random)temp : 490
-20:20:21.614 -> (random)moisture : 171
-20:20:21.614 -> fix batt 255
-20:20:21.614 -> (random)temp : 1200
-20:20:21.614 -> (random)moisture : 1328
-20:20:21.661 -> fix batt 255
-20:20:21.661 -> (random)temp : 1516
-20:20:21.661 -> (random)moisture : 817
-20:20:21.661 -> fix batt 255
-20:20:21.661 -> (random)temp : 819
-20:20:21.661 -> (random)moisture : 1860
-20:20:21.708 -> fix batt 255
-20:20:21.708 -> (random)temp : 1520
-20:20:21.708 -> (random)moisture : 761
-20:20:21.708 -> fix batt 255
-20:20:21.708 -> (random)temp : 1009
-20:20:21.708 -> (random)moisture : 400
-20:20:21.754 -> fix batt 255
-20:20:21.754 -> (random)temp : 1795
-20:20:21.754 -> (random)moisture : 608
-20:20:21.754 -> fix batt 255
-20:20:21.801 -> (random)temp : 1050
-20:20:21.801 -> (random)moisture : 732
-20:20:21.801 -> at+recv=-17,7,4:20102002
-20:20:21.801 -> Decode > addrRe, addrSe, netAddr, frameT 
-20:20:21.801 -> 32, 16, 32, 2
-20:20:21.801 -> addrReceiver not match
-20:20:21.801 -> fix batt 255
-20:20:21.801 -> (random)temp : 1072
-20:20:21.801 -> (random)moisture : 1074
-20:20:21.848 -> fix batt 255
-20:20:21.848 -> (random)temp : 309
-20:20:21.848 -> (random)moisture : 1347
-20:20:21.848 -> fix batt 255
-20:20:21.848 -> (random)temp : 598
-20:20:21.848 -> (random)moisture : 559
-20:20:21.895 -> fix batt 255
-20:20:21.895 -> (random)temp : 68
-20:20:21.895 -> (random)moisture : 1229
-20:20:21.895 -> fix batt 255
-20:20:21.895 -> (random)temp : 269
-20:20:21.895 -> (random)moisture : 896
-20:20:21.895 -> at+recv=-13,8,8:10202004FF534729
-20:20:21.895 -> Decode > addrRe, addrSe, netAddr, frameT 
-20:20:21.895 -> 16, 32, 32, 4
-20:20:21.895 -> addrReceiver not match
-20:20:21.942 -> fix batt 255
-20:20:21.942 -> (random)temp : 1959
-20:20:21.942 -> (random)moisture : 1223
-20:20:21.942 -> fix batt 255
-20:20:21.942 -> (random)temp : 715
-20:20:21.942 -> (random)moisture : 800
-20:20:21.989 -> fix batt 255
-20:20:21.989 -> (random)temp : 1072
-20:20:21.989 -> (random)moisture : 689
-20:20:21.989 -> fix batt 255
-20:20:21.989 -> (random)temp : 1603
-20:20:21.989 -> (random)moisture : 759
-20:20:21.989 -> at+recv=-17,7,4:20102005
-20:20:21.989 -> Decode > addrRe, addrSe, netAddr, frameT 
-20:20:21.989 -> 32, 16, 32, 5
-20:20:21.989 -> addrReceiver not match
-20:20:22.036 -> fix batt 255
-20:20:22.036 -> (random)temp : 1971
-20:20:22.036 -> (random)moisture : 1351
-20:20:22.036 -> fix batt 255
-20:20:22.036 -> (random)temp : 702
-20:20:22.083 -> (random)moisture : 977
-20:20:22.083 -> fix batt 255
-20:20:22.083 -> (random)temp : 1456
-20:20:22.083 -> (random)moisture : 908
-20:20:22.129 -> fix batt 255
-20:20:22.129 -> (random)temp : 53
-20:20:22.129 -> (random)moisture : 1602
-20:20:22.129 -> fix batt 255
-20:20:22.129 -> (random)temp : 1553
-20:20:22.129 -> (random)moisture : 175
-20:20:22.176 -> fix batt 255
-20:20:22.176 -> (random)temp : 1268
-20:20:22.176 -> (random)moisture : 1006
-20:20:22.176 -> fix batt 255
-20:20:22.176 -> (random)temp : 1513
-20:20:22.176 -> (random)moisture : 1870
-20:20:22.223 -> fix batt 255
-20:20:22.223 -> (random)temp : 1157
-20:20:22.223 -> (random)moisture : 1525
-20:20:22.223 -> at+recv=-17,7,4:21102002
-20:20:22.223 -> Decode > addrRe, addrSe, netAddr, frameT 
-20:20:22.223 -> 33, 16, 32, 2
-20:20:22.223 -> S: 3
-20:20:22.223 -> mcu>at+set_config=lorap2p:transfer_mode:2
-20:20:22.223 -> rak>OK 
+00:17:19.610 -> module initiala⸮⸮YC⸮B⸮⸮J⸮⸮Ʌ⸮⸮ PSRAM ID read error: 0xffffffff
+00:17:19.650 -> select_node
+00:17:19.650 -> acktimeOut : 197
+00:17:19.650 -> CH_Sweep_timeOut : 9009
+00:17:19.650 -> netAddr_negotiate_timeOut : 5742
+00:17:19.650 -> Start Config RAK4200...
+00:17:19.650 -> mcu>at+set_config=lora:work_mode:1
+00:17:19.690 -> rak>LoRa (R) is a registered trademark or service mark of Semtech Corporation or its affiliates. LoRaWAN (R) is a licensed mark.
 
-20:20:22.223 -> mcu>at+send=lorap2p:10212004ff5f5485
-20:20:22.317 -> rak>OK 
+00:17:19.690 -> rak>
 
-20:20:22.317 -> mcu>at+set_config=lorap2p:transfer_mode:1
-20:20:22.364 -> rak>OK 
+00:17:19.690 -> rak>RAK4200 version:3.2.0.15
 
-20:20:22.364 -> S: 4
-20:20:22.364 -> S: 4
-20:20:22.411 -> S: 4
-20:20:22.411 -> S: 4
-20:20:22.458 -> at+recv=-17,7,4:21102005
-20:20:22.458 -> Decode > addrRe, addrSe, netAddr, frameT 
-20:20:22.458 -> 33, 16, 32, 5, 0, 15, 0
-20:20:22.458 -> receive ACK
-20:20:22.458 -> fix batt 255
-20:20:22.458 -> (random)temp : 1712
-20:20:22.458 -> (random)moisture : 59
+00:17:19.737 -> rak>UART1 work mode: RUI_UART_NORMAL, 115200, N81
+
+00:17:19.737 -> rak>UART2 work mode: RUI_UART_NORMAL, 115200, N81
+
+00:17:19.737 -> rak>Current work_mode:P2P
+
+00:17:19.737 -> rak>LoRa P2P Transfer_mode: Receiver
+
+00:17:19.737 -> rak>Initialization OK
+
+00:17:19.737 -> set Work Mode P2P
+00:17:19.737 -> Init LoRaP2P parameters
+00:17:19.737 -> mcu>at+set_config=lorap2p:920200000:8:0:4:8:11
+00:17:19.926 -> mcu>at+set_config=lorap2p:transfer_mode:1
+00:17:19.926 -> rak>OK 
+
+00:17:19.926 -> RECEIVER Mode
+00:17:19.926 -> S: 20
+00:17:19.926 -> CH_Sweeping : 0
+00:17:19.926 -> mcu>at+set_config=lorap2p:transfer_mode:2
+00:17:19.973 -> rak>OK 
+
+00:17:19.973 -> mcu>at+send=lorap2p:ff050a20abcdef0987654321
+00:17:20.067 -> rak>OK 
+
+00:17:20.067 -> mcu>at+set_config=lorap2p:transfer_mode:1
+00:17:20.067 -> rak>OK 
+
+00:17:20.207 -> at+recv=-38,8,12:21102021ABCDEF0987654321
+00:17:20.207 -> abcdef0987654321
+00:17:20.254 -> Decode > addrRe, addrSe, netAddr, frameT 
+00:17:20.254 -> 33, 16, 32, 33
+00:17:20.254 -> mcu>at+set_config=lorap2p:transfer_mode:2
+00:17:20.254 -> rak>OK 
+
+00:17:20.254 -> mcu>at+send=lorap2p:10212022
+00:17:20.348 -> rak>OK 
+
+00:17:20.348 -> mcu>at+set_config=lorap2p:transfer_mode:1
+00:17:20.348 -> rak>OK 
+
+00:17:20.442 -> at+recv=-43,8,4:21102023
+00:17:20.442 -> Decode > addrRe, addrSe, netAddr, frameT 
+00:17:20.442 -> 33, 16, 32, 35
+00:17:20.442 -> Joined
+00:17:25.198 -> at+recv=-44,8,4:20102002
+00:17:25.198 -> Decode > addrRe, addrSe, netAddr, frameT 
+00:17:25.198 -> 32, 16, 32, 2
+00:17:25.198 -> addrReceiver not match
+00:17:25.293 -> at+recv=-18,8,8:10202004FF2B1312
+00:17:25.339 -> Decode > addrRe, addrSe, netAddr, frameT 
+00:17:25.339 -> 16, 32, 32, 4
+00:17:25.339 -> addrReceiver not match
+00:17:25.432 -> at+recv=-44,8,4:20102005
+00:17:25.432 -> Decode > addrRe, addrSe, netAddr, frameT 
+00:17:25.432 -> 32, 16, 32, 5
+00:17:25.432 -> addrReceiver not match
+00:17:25.615 -> at+recv=-43,7,4:21102002
+00:17:25.615 -> Decode > addrRe, addrSe, netAddr, frameT 
+00:17:25.615 -> 33, 16, 32, 2
+00:17:25.615 -> S: 3
+00:17:25.615 -> mcu>at+set_config=lorap2p:transfer_mode:2
+00:17:25.615 -> rak>OK 
+
+00:17:25.615 -> mcu>at+send=lorap2p:10212004ff77509c
+00:17:25.755 -> rak>OK 
+
+00:17:25.755 -> mcu>at+set_config=lorap2p:transfer_mode:1
+00:17:25.755 -> rak>OK 
+
+00:17:25.755 -> S: 4
+00:17:25.755 -> S: 4
+00:17:25.792 -> S: 4
+00:17:25.839 -> S: 4
+00:17:25.839 -> at+recv=-43,7,4:21102005
+00:17:25.839 -> Decode > addrRe, addrSe, netAddr, frameT 
+00:17:25.839 -> 33, 16, 32, 5, 0, 15, 0
+00:17:25.839 -> receive ACK
+00:17:33.180 -> at+recv=-43,8,4:20102002
+00:17:33.227 -> Decode > addrRe, addrSe, netAddr, frameT 
+00:17:33.227 -> 32, 16, 32, 2
+00:17:33.227 -> addrReceiver not match
+00:17:33.321 -> at+recv=-18,7,8:10202004FF5FA603
+00:17:33.321 -> Decode > addrRe, addrSe, netAddr, frameT 
+00:17:33.321 -> 16, 32, 32, 4
+00:17:33.321 -> addrReceiver not match
+00:17:33.415 -> at+recv=-44,7,4:20102005
+00:17:33.415 -> Decode > addrRe, addrSe, netAddr, frameT 
+00:17:33.415 -> 32, 16, 32, 5
+00:17:33.415 -> addrReceiver not match
+00:17:33.650 -> at+recv=-43,7,4:21102002
+00:17:33.650 -> Decode > addrRe, addrSe, netAddr, frameT 
+00:17:33.650 -> 33, 16, 32, 2
+00:17:33.650 -> S: 3
+00:17:33.650 -> mcu>at+set_config=lorap2p:transfer_mode:2
+00:17:33.650 -> rak>OK 
+
+00:17:33.650 -> mcu>at+send=lorap2p:10212004ff1fa10d
+00:17:33.743 -> rak>OK 
+
+00:17:33.743 -> mcu>at+set_config=lorap2p:transfer_mode:1
+00:17:33.743 -> rak>OK 
+
+00:17:33.743 -> S: 4
+00:17:33.790 -> S: 4
+00:17:33.790 -> S: 4
+00:17:33.837 -> S: 4
+00:17:33.837 -> at+recv=-43,8,4:21102005
+00:17:33.837 -> Decode > addrRe, addrSe, netAddr, frameT 
+00:17:33.884 -> 33, 16, 32, 5, 0, 15, 0
+00:17:33.884 -> receive ACK

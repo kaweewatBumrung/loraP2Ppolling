@@ -3,17 +3,17 @@
 
 /*
   loraP2Ppolling.cpp
-  part of loraP2Ppolling arduino library v 1.0.0
-  write by: kaweewat bumrung
-  date 4/11/2021 (dd/mm/yyyy)
+  Part of loraP2Ppolling arduino library version 1.1.0
+  Author: kaweewat bumrung
+  date: 4/11/2021 (dd/mm/yyyy)
   arduino IDE 1.8.15
-  arduino ESP32 core 1.0.6
+  ESP32 arduino core 2.0.1
 
   to use with ESP32 and RAK4200
 
   hardware from ETT
   http://www.etteam.com/prodIOT/LORA-RAK4200-AS923-MODULE/index.html
-  version 1.0.0
+  this file version 1.1.0
 */
 
 #include "loraP2Ppolling.h"
@@ -30,15 +30,21 @@
 #define select_master               1
 #define select_node                 2
 
-#define AS923_CH0                   923200000
-#define AS923_CH1                   923400000
-#define AS923_CH2                   923600000
-#define AS923_CH3                   923800000
-#define AS923_CH4                   924000000
-#define AS923_CH5                   924200000
-#define AS923_CH6                   924400000
-#define AS923_CH7                   924600000
-#define AS923_CH8                   924800000
+#define totalChannels               14
+#define FREQ_CH0                    920200000
+#define FREQ_CH1                    920400000
+#define FREQ_CH2                    920600000
+#define FREQ_CH3                    920800000
+#define FREQ_CH4                    921000000
+#define FREQ_CH5                    921200000
+#define FREQ_CH6                    921400000
+#define FREQ_CH7                    921600000
+#define FREQ_CH8                    921800000
+#define FREQ_CH9                    922000000
+#define FREQ_CH10                   922200000
+#define FREQ_CH11                   922400000
+#define FREQ_CH12                   922600000
+#define FREQ_CH13                   922800000
 
 // from semtech lora modem calculator tool (round up to ms)
 // see datasheet (sx1276 for RAK4200) for full equation
@@ -62,14 +68,14 @@
 #define dura_rk_initP2P_mode        (11)
 #define dura_rk_initP2P             (250)
 
+// just set some duration up, it will be calculate with SF later
 int acktimeOut                      = 300;   // ~300 use dura_rk_initP2P_mode and timeOnair_SF8_8byte
 int joinrequest_ans_timeOut         = 2000;  // ~()
 int netAddr_answer_timeOut          = 2000;  // ~()
 int CH_Sweep_timeOut                = 9100;  // ~9100 ~(100 * timeOnair_SF8_12byte)
 int netAddr_negotiate_timeOut       = 5800;  // ~5800 ~(100 * timeOnair_SF8_4byte)
 
-// address
-// for assign using 32 - 254
+// address for assign in the range of 32 - 254, total of 223
 const uint8_t   startOffset = 32;
 
 const uint8_t   _addr_ask_netAddr       = 1;
@@ -127,18 +133,20 @@ P2PpollingClass::P2PpollingClass (int lora_rx_pin, int lora_tx_pin, int lora_res
 bool P2PpollingClass::P2Ppolling_begin (int select_master_node, int ACK_mode, int _SF, int _power)
 {
   bool to_return = false;
+  String _Buffer;
+  uint32_t c;
   // reserve memory for String, try to avoid heap fragmentation (in bytes)
   payloadString.reserve(13);          // full payload
   ComBuffer.reserve(257);             // full uart RX buffer
   ComnetAddrNegotiate.reserve(257);   // full uart RX buffer
 
   if (select_master_node == select_master) 
-  { // master
+  {
     set_master_or_node = select_master_node;
     Serial.println("select_master");
   }
   else if (select_master_node == select_node)
-  { // node
+  {
     ComRemove .reserve(50); // ~(at com + payload)
     set_master_or_node = select_master_node;
     Serial.println("select_node");
@@ -205,6 +213,8 @@ bool P2PpollingClass::P2Ppolling_begin (int select_master_node, int ACK_mode, in
       }
   }
 
+  T_waitforJoin = (totalChannels * CH_Sweep_timeOut) + acktimeOut;
+
   Serial.print("acktimeOut : ");
   Serial.println(acktimeOut);
   Serial.print("CH_Sweep_timeOut : ");
@@ -212,23 +222,28 @@ bool P2PpollingClass::P2Ppolling_begin (int select_master_node, int ACK_mode, in
   Serial.print("netAddr_negotiate_timeOut : ");
   Serial.println(netAddr_negotiate_timeOut);
 
-  // set freq to AS923_CH0 (923200000)
-  CH_FREQ = AS923_CH0;
+  // set freq to FREQ_CH0
+  CH_FREQ = FREQ_CH0;
 
   SerialDebug.println("Start Config RAK4200...");
   while (!SerialLora);
 
+  // wait for Initialization OK
+  c = millis();
+  do { _Buffer = RakLoRa.rk_recvP2PData();
+  } while ((_Buffer.indexOf("Initialization OK") == -1) && (millis() - c <= 1000));
+
   // Initial LoRa Work Mode = LoRaP2P Mode
   if (RakLoRa.rk_setWorkingMode(1)) {
-    SerialDebug.println(F("set Work Mode P2P...OK"));
+    SerialDebug.println(F("set Work Mode P2P"));
   }
   else 
   {
-    SerialDebug.println(F("set work_mode failed, will reset."));
+    SerialDebug.println(F("set Work Mode failed"));
 
-    // active Reset
+    // Reset
     digitalWrite(LORA_RES_PIN, LOW);
-    delay(1000);
+    delay(500);
     digitalWrite(LORA_RES_PIN, HIGH);
 
     // Wait Power on Ready
@@ -246,24 +261,28 @@ bool P2PpollingClass::P2Ppolling_begin (int select_master_node, int ACK_mode, in
       // wait up to 1000ms
       if ((millis() - TS) < 1000) {
         Serial.println("ERROR module not respond");
-        // just loop
-        while (true);
+        
+        // restart ESP32
+        Serial.println("restart");
+        ESP.restart();
       }
     }
   }
-  SerialDebug.println(F("Start init RAK4200 LoRaP2P parameters..."));
+
+  SerialDebug.println(F("Init LoRaP2P parameters"));
 
   // set parameter
   // Freq(HZ), SF(12), BW(0 = 125kHz), CR(1 = 4/5),Preamble 8,Power(dBm) 11 (max 17)
-  uint32_t c = millis();
+  c = millis();
   if (!RakLoRa.rk_initP2P((String)CH_FREQ, SF, BW, CR, PRlen, TX_Power)) {
-    String _Buffer;
+    _Buffer;
     do { _Buffer = RakLoRa.rk_recvP2PData();
     } while ((_Buffer.indexOf("OK") == -1) && (millis() - c <= 1000)); //.indexOf return -1 when not found
+    Serial.println(_Buffer);
   }
 
   if (RakLoRa.rk_initP2P_mode(P2P_RECEIVER)) {
-      SerialDebug.println(F("RECEIVER Mode"));
+    SerialDebug.println(F("RECEIVER Mode"));
   }
   to_return = true;
   return to_return;
@@ -285,20 +304,35 @@ void P2PpollingClass::setExled (int _Exled)
   ExLED = _Exled;
 }
 
+bool P2PpollingClass::set_T_waitforJoin (uint32_t _ms)
+{
+  bool to_return = false;
+  Serial.println("set waitforJoin");
+  if (_ms >= CH_Sweep_timeOut) {
+    T_waitforJoin = _ms;
+    to_return = true;
+  } else Serial.println("set fail");
+  Serial.print("T_waitforJoin : ");
+  Serial.println(T_waitforJoin);
+  return to_return;
+}
+
 bool P2PpollingClass::setPolling_interval (uint32_t _ms)
 {
   bool to_return = false;
+  Serial.println("set Interval");
   if (_ms >= acktimeOut) {
     T_Interval = _ms;
     to_return = true;
-  }
+  } else Serial.println("set fail");
+  Serial.print("T_Interval : ");
+  Serial.println(T_Interval);
   return to_return;
 }
 
 // will call finite state machine of selected type (master or node)
 int P2PpollingClass::FSM_polling ()
 {
-  // check if it master or node
   switch (set_master_or_node)
   {
     case select_master: return masterPolling();
@@ -327,8 +361,8 @@ int P2PpollingClass::masterPolling ()
         //Serial.println("S: " + (String)internalState);
         
         if (startMainloop == 0) {  // initialize as 0
-          timeStamp_loop = millis();
           startMainloop = 1;
+          timeStamp_loop = millis();
         }
 
         // to netAddr negotiate
@@ -337,8 +371,21 @@ int P2PpollingClass::masterPolling ()
           break;
         }
 
+        //Serial.print("start : ");
+        //Serial.println(startMainloop);
+        //Serial.print("TS : ");
+        //Serial.println(timeStamp_loop);
+
+        // wait for node to join
+        if ((startMainloop == 1) && (millis() - timeStamp_loop >= T_waitforJoin)) {
+          startMainloop = 2;
+          Serial.println("wait end");
+        }
+
         // loop with T_Interval
-        if (millis() - timeStamp_loop >= T_Interval) {
+        if (((startMainloop == 2) || (startMainloop == 3))
+            && (millis() - timeStamp_loop >= T_Interval)) {
+          startMainloop = 3;
           timeStamp_loop = millis();
           internalState = 2;
           tonextNode = 0;
@@ -843,7 +890,9 @@ int P2PpollingClass::masterPolling ()
         if (RakLoRa.rk_sendP2PData(payloadCharArray)) {
           RakLoRa.rk_initP2P_mode(P2P_RECEIVER);
         }
-        internalState = 2;
+        if (startMainloop == 3) {
+          internalState = 2;
+        } else internalState = 1;
         break;
       }
     case 25:  // netAddr negotiate
@@ -1035,7 +1084,7 @@ int P2PpollingClass::masterPolling ()
               }
             }
 
-            // remove it node_EUI
+            // remove node_EUI
             Serial.println("remove node addr : " + (String)addrToRemove);
             node_EUI[addrToRemove - startOffset] = 0;
             nodeRemove_flag = 0;
@@ -1049,8 +1098,8 @@ int P2PpollingClass::masterPolling ()
       {
         Serial.println("S: " + (String)internalState);
 
-        uint32_t freq;
-        if (CH_Sweeping == 9) // jump to state 32
+        uint32_t toset_freq;
+        if (CH_Sweeping == 14) // jump to state 32
         {
           // stop sweep, move to next state
           internalState = 32;
@@ -1058,17 +1107,17 @@ int P2PpollingClass::masterPolling ()
         }
         Serial.println("CH_Sweeping : " + (String)CH_Sweeping);
 
-        // sweeping between 9 channels (CH_Sweeping : 0 - 8)
+        // sweeping between 14 channels
         if (CH_Sweeping > 0)
         { 
           // sweeping, change CH_FREQ to next Channel
-          freq = chTofreq(CH_Sweeping);
+          toset_freq = chTofreq(CH_Sweeping);
         }
-        else freq = CH_FREQ;
+        else toset_freq = CH_FREQ;
         
-        if (freq != CH_FREQ)
+        if (toset_freq != CH_FREQ)
         { // change CH_FREQ to next Channel
-          CH_FREQ = freq;
+          CH_FREQ = toset_freq;
           if (!RakLoRa.rk_initP2P((String)CH_FREQ, SF, BW, CR, PRlen, TX_Power)) {
             String _Buffer;
             do { _Buffer = RakLoRa.rk_recvP2PData();
@@ -1182,25 +1231,25 @@ int P2PpollingClass::masterPolling ()
 
         // calculate
         uint8_t netAddrToAssign = 255;
-        uint32_t freq;
+        uint32_t toset_freq;
         for (int i = 32; i <= 254; i++)  // 32 - 254
         {
           if (!(TestBit (i, netAddr_bitmask))) {  //TestBit return addr(i) that have batmask == 1
             netAddrToAssign = i;
-            freq = chTofreq((netAddrToAssign - startOffset) % 9);
+            toset_freq = chTofreq((netAddrToAssign - startOffset) % totalChannels);
             break;
           }
           if (i == 254) { // none left use netAddr 255
             netAddrToAssign = 255;
-            freq = chTofreq((255 - startOffset) % 9);
+            toset_freq = chTofreq((255 - startOffset) % totalChannels);
             break;
           }
         }
 
         // change channel
-        if (freq != CH_FREQ)
+        if (toset_freq != CH_FREQ)
         {
-          CH_FREQ = freq;
+          CH_FREQ = toset_freq;
           if (!RakLoRa.rk_initP2P((String)CH_FREQ, SF, BW, CR, PRlen, TX_Power)) {
             String _Buffer;
             do { _Buffer = RakLoRa.rk_recvP2PData();
@@ -1276,8 +1325,8 @@ int P2PpollingClass::masterPolling ()
           }
           
           // change channel
-          int freq = chTofreq((toAssign - startOffset) % 9);
-          if (freq != CH_FREQ)
+          int toset_freq = chTofreq((toAssign - startOffset) % totalChannels);
+          if (toset_freq != CH_FREQ)
           {
             internalState = 32;
             break;
@@ -1293,7 +1342,10 @@ int P2PpollingClass::masterPolling ()
         {
           netAddrNegotiate_success = 1;
           internalState = 1;
+          timeStamp_loop = millis();
           Serial.println("Success netAddr : " + (String)thisnetAddr);
+          Serial.print("Start wait : ");
+          Serial.println(T_waitforJoin);
           break;
         }
         break;
@@ -1582,20 +1634,21 @@ int P2PpollingClass::nodePolling ()
 
         if (isJoin == 0)
         { // join again or not
-          uint32_t freq;
-          freq = chTofreq(CH_Sweeping);
+          uint32_t toset_freq;
+          toset_freq = chTofreq(CH_Sweeping);
 
-          // sweeping between 9 channels (CH_Sweeping : 0 - 8)
-          if (freq != CH_FREQ)
+          // sweeping between 14 channels
+          if (toset_freq != CH_FREQ)
           { // sweeping, change CH_FREQ to next Channel
-            CH_FREQ = freq;
-            Serial.println("CH_Sweeping : " + (String)CH_Sweeping);
+            CH_FREQ = toset_freq;
+            //Serial.println("CH_Sweeping : " + (String)CH_Sweeping);
             RakLoRa.rk_initP2P((String)CH_FREQ, SF, BW, CR, PRlen, TX_Power);
             String _Buffer;
             do { _Buffer = RakLoRa.rk_recvP2PData();
             } while (_Buffer.indexOf("OK") == -1); //.indexOf return -1 when not found
             Serial.println(_Buffer);
           }
+          Serial.println("CH_Sweeping : " + (String)CH_Sweeping);
         }
         frameEncoder_EUI (payloadString,
                           payloadCharArray_EUI,
@@ -1619,7 +1672,7 @@ int P2PpollingClass::nodePolling ()
         if ((millis() - timeStamp_join_request >= CH_Sweep_timeOut))
         {
           CH_Sweeping += 1;
-          if (CH_Sweeping == 9) CH_Sweeping = 0;
+          if (CH_Sweeping == 14) CH_Sweeping = 0;
           internalState = 20;
           break;  
         }
@@ -1983,7 +2036,7 @@ void P2PpollingClass::moduleInitialize (int lora_rx_pin, int lora_tx_pin, int lo
     SerialLora.setRxBufferSize(1024);
     pinMode(LORA_RES_PIN, OUTPUT);
     digitalWrite(LORA_RES_PIN, HIGH);
-    SerialDebug.println("moduleInitialize");
+    SerialDebug.println("module initialize");
 }
 
 void P2PpollingClass::_EUI64_print (uint64_t _EUI_64bit)
@@ -2251,26 +2304,34 @@ uint64_t P2PpollingClass::hex2int(char *hex)
   return val;
 }
 
+// set 256 bit bitmask as array of uint32_t (8*32=256 bit)
+
+// Set the bit at the toSet-th position in Addr_bitmask[]
 void P2PpollingClass::SetAddr_bitmask (uint8_t toSet, uint32_t Addr_bitmask[])
 {
-  //toSet = 7;
-  Addr_bitmask[toSet / 32] |= 1 << (toSet % 32); // Set the bit at the toSet-th position in Addr_bitmask[]
+  // Addr_bitmask[index for which block of 32 bit]
+  // than bitwise OR it (set 1) with the index of that within the block
+
+  Addr_bitmask[toSet / 32] |= 1 << (toSet % 32);
 }
 
+// Clear the bit at the toSet-th position in Addr_bitmask[]
 void P2PpollingClass::ClearAddr_bitmask (uint8_t toSet, uint32_t Addr_bitmask[])
 {
-  //toSet = 7;
-  Addr_bitmask[toSet / 32] &= ~(1 << (toSet % 32)); // Clear the bit at the toSet-th position in Addr_bitmask[]
+  // Addr_bitmask[index for which block of 32 bit]
+  // than bitwise AND it (set 0) with the index of that bit within the block
+  Addr_bitmask[toSet / 32] &= ~(1 << (toSet % 32));
 }
 
 int P2PpollingClass::TestBit (uint8_t toTest, uint32_t Addr_bitmask[])
 {
+  // return 0 or 1, by bitwise AND that bit with 1 and test for != 0
   return ((Addr_bitmask[toTest / 32] & (1 << (toTest % 32))) != 0 );
 }
 
 void P2PpollingClass::PrintAddr_bitmask (uint32_t Addr_bitmask[])
 {
-  //int p;
+  // print from MSB (bit 255) to LSB (bit 0)
   for (int i = 255; i >= 0; i--)
   {
     Serial.print(TestBit (i, Addr_bitmask));;
@@ -2283,15 +2344,20 @@ uint32_t P2PpollingClass::chTofreq (int ch)
 {
   switch (ch)
   {
-    case 0: return AS923_CH0;
-    case 1: return AS923_CH1;
-    case 2: return AS923_CH2;
-    case 3: return AS923_CH3;
-    case 4: return AS923_CH4;
-    case 5: return AS923_CH5;
-    case 6: return AS923_CH6;
-    case 7: return AS923_CH7;
-    case 8: return AS923_CH8;
-    default: return AS923_CH0;
+    case 0: return FREQ_CH0;
+    case 1: return FREQ_CH1;
+    case 2: return FREQ_CH2;
+    case 3: return FREQ_CH3;
+    case 4: return FREQ_CH4;
+    case 5: return FREQ_CH5;
+    case 6: return FREQ_CH6;
+    case 7: return FREQ_CH7;
+    case 8: return FREQ_CH8;
+    case 9: return FREQ_CH9;
+    case 10: return FREQ_CH10;
+    case 11: return FREQ_CH11;
+    case 12: return FREQ_CH12;
+    case 13: return FREQ_CH13;
+    default: return FREQ_CH0;
   }
 }

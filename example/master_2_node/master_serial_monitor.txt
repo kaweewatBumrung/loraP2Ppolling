@@ -1,667 +1,462 @@
-20:18:20.996 -> moduleInitialize
-20:18:21.902 -> select_master
-20:18:21.902 -> acktimeOut : 197
-20:18:21.902 -> CH_Sweep_timeOut : 9009
-20:18:21.902 -> netAddr_negotiate_timeOut : 5742
-20:18:21.902 -> Start Config RAK4200...
-20:18:21.902 -> mcu>at+set_config=lora:work_mode:1
-20:18:21.902 -> rak>LoRa (R) is a registered trademark or service mark of Semtech Corporation or its affiliates. LoRaWAN (R) is a licensed mark.
-
-20:18:21.949 -> rak>
-
-20:18:21.949 -> rak>RAK4200 version:3.2.0.15
-
-20:18:21.949 -> rak>UART1 work mode: RUI_UART_NORMAL, 115200, N81
-
-20:18:21.949 -> rak>UART2 work mode: RUI_UART_NORMAL, 115200, N81
-
-20:18:21.949 -> rak>Current work_mode:P2P
-
-20:18:21.949 -> rak>LoRa P2P Transfer_mode: Receiver
-
-20:18:21.949 -> rak>Initialization OK
-
-20:18:21.949 -> set Work Mode P2P...OK
-20:18:21.949 -> Start init RAK4200 LoRaP2P parameters...
-20:18:21.949 -> mcu>at+set_config=lorap2p:923200000,8,0,4,8,11
-20:18:22.230 -> mcu>at+set_config=lorap2p:transfer_mode:1
-20:18:22.230 -> rak>OK 
-
-20:18:22.230 -> RECEIVER Mode
-20:18:22.230 -> S: 30
-20:18:22.230 -> CH_Sweeping : 0
-20:18:22.230 -> mcu>at+set_config=lorap2p:transfer_mode:2
-20:18:22.464 -> rak>OK 
-
-20:18:22.464 -> mcu>at+send=lorap2p:ff010110
-20:18:22.558 -> rak>OK 
-
-20:18:22.558 -> mcu>at+set_config=lorap2p:transfer_mode:1
-20:18:22.558 -> rak>OK 
-
-20:18:28.323 -> S: 30
-20:18:28.323 -> CH_Sweeping : 1
-20:18:28.323 -> mcu>at+set_config=lorap2p:923400000,8,0,4,8,11
-20:18:28.558 -> OK
-20:18:28.558 -> mcu>at+set_config=lorap2p:transfer_mode:2
-20:18:28.792 -> rak>OK 
-
-20:18:28.792 -> mcu>at+send=lorap2p:ff010110
-20:18:28.886 -> rak>OK 
-
-20:18:28.886 -> mcu>at+set_config=lorap2p:transfer_mode:1
-20:18:28.886 -> rak>OK 
-
-20:18:34.651 -> S: 30
-20:18:34.651 -> CH_Sweeping : 2
-20:18:34.651 -> mcu>at+set_config=lorap2p:923600000,8,0,4,8,11
-20:18:34.885 -> OK
-20:18:34.885 -> mcu>at+set_config=lorap2p:transfer_mode:2
-20:18:35.167 -> rak>OK 
-
-20:18:35.167 -> mcu>at+send=lorap2p:ff010110
-20:18:35.260 -> rak>OK 
-
-20:18:35.260 -> mcu>at+set_config=lorap2p:transfer_mode:1
-20:18:35.260 -> rak>OK 
-
-20:18:41.008 -> S: 30
-20:18:41.008 -> CH_Sweeping : 3
-20:18:41.008 -> mcu>at+set_config=lorap2p:923800000,8,0,4,8,11
-20:18:41.243 -> OK
-20:18:41.243 -> mcu>at+set_config=lorap2p:transfer_mode:2
-20:18:41.524 -> rak>OK 
-
-20:18:41.524 -> mcu>at+send=lorap2p:ff010110
-20:18:41.618 -> rak>OK 
-
-20:18:41.618 -> mcu>at+set_config=lorap2p:transfer_mode:1
-20:18:41.618 -> rak>OK 
-
-20:18:47.336 -> S: 30
-20:18:47.336 -> CH_Sweeping : 4
-20:18:47.336 -> mcu>at+set_config=lorap2p:924000000,8,0,4,8,11
-20:18:47.570 -> OK
-20:18:47.570 -> mcu>at+set_config=lorap2p:transfer_mode:2
-20:18:47.852 -> rak>OK 
-
-20:18:47.852 -> mcu>at+send=lorap2p:ff010110
-20:18:47.945 -> rak>OK 
-
-20:18:47.945 -> mcu>at+set_config=lorap2p:transfer_mode:1
-20:18:47.945 -> rak>OK 
-
-20:18:53.711 -> S: 30
-20:18:53.711 -> CH_Sweeping : 5
-20:18:53.711 -> mcu>at+set_config=lorap2p:924200000,8,0,4,8,11
-20:18:53.945 -> OK
-20:18:53.945 -> mcu>at+set_config=lorap2p:transfer_mode:2
-20:18:54.179 -> rak>OK 
-
-20:18:54.179 -> mcu>at+send=lorap2p:ff010110
-20:18:54.273 -> rak>OK 
-
-20:18:54.273 -> mcu>at+set_config=lorap2p:transfer_mode:1
-20:18:54.273 -> rak>OK 
-
-20:19:00.038 -> S: 30
-20:19:00.038 -> CH_Sweeping : 6
-20:19:00.038 -> mcu>at+set_config=lorap2p:924400000,8,0,4,8,11
-20:19:00.273 -> OK
-20:19:00.273 -> mcu>at+set_config=lorap2p:transfer_mode:2
-20:19:00.554 -> rak>OK 
-
-20:19:00.554 -> mcu>at+send=lorap2p:ff010110
-20:19:00.648 -> rak>OK 
-
-20:19:00.648 -> mcu>at+set_config=lorap2p:transfer_mode:1
-20:19:00.648 -> rak>OK 
-
-20:19:06.413 -> S: 30
-20:19:06.413 -> CH_Sweeping : 7
-20:19:06.413 -> mcu>at+set_config=lorap2p:924600000,8,0,4,8,11
-20:19:06.647 -> OK
-20:19:06.647 -> mcu>at+set_config=lorap2p:transfer_mode:2
-20:19:06.881 -> rak>OK 
-
-20:19:06.881 -> mcu>at+send=lorap2p:ff010110
-20:19:06.975 -> rak>OK 
-
-20:19:06.975 -> mcu>at+set_config=lorap2p:transfer_mode:1
-20:19:06.975 -> rak>OK 
-
-20:19:12.740 -> S: 30
-20:19:12.740 -> CH_Sweeping : 8
-20:19:12.740 -> mcu>at+set_config=lorap2p:924800000,8,0,4,8,11
-20:19:12.975 -> OK
-20:19:12.975 -> mcu>at+set_config=lorap2p:transfer_mode:2
-20:19:13.209 -> rak>OK 
-
-20:19:13.209 -> mcu>at+send=lorap2p:ff010110
-20:19:13.303 -> rak>OK 
-
-20:19:13.303 -> mcu>at+set_config=lorap2p:transfer_mode:1
-20:19:13.303 -> rak>OK 
-
-20:19:19.061 -> S: 30
-20:19:19.061 -> S: 32
-20:19:19.061 -> mcu>at+set_config=lorap2p:923200000,8,0,4,8,11
-20:19:19.343 -> OK
-20:19:19.343 -> mcu>at+set_config=lorap2p:transfer_mode:2
-20:19:19.577 -> rak>OK 
-
-20:19:19.577 -> mcu>at+send=lorap2p:ff032013
-20:19:19.671 -> rak>OK 
-
-20:19:19.671 -> mcu>at+set_config=lorap2p:transfer_mode:1
-20:19:19.671 -> rak>OK 
-
-20:19:25.404 -> Success netAddr : 32
-20:19:25.404 -> 
-20:19:25.404 -> New loop > timeStamp_loop : 64407
-20:19:25.451 -> S: 2
-20:19:25.451 -> endOfpolling
-20:19:33.416 -> 
-20:19:33.416 -> New loop > timeStamp_loop : 72426
-20:19:33.460 -> S: 2
-20:19:33.460 -> endOfpolling
-20:19:41.448 -> 
-20:19:41.448 -> New loop > timeStamp_loop : 80445
-20:19:41.488 -> S: 2
-20:19:41.488 -> endOfpolling
-20:19:49.451 -> 
-20:19:49.451 -> New loop > timeStamp_loop : 88464
-20:19:49.497 -> S: 2
-20:19:49.497 -> endOfpolling
-20:19:56.878 -> at+recv=-23,7,12:FF050A20FEDCBA1234567890
-20:19:56.878 -> fedcba1234567890
-20:19:56.878 -> Decode > addrRe, addrSe, netAddr, frameT 
-20:19:56.878 -> 255, 5, 10, 32
-20:19:56.878 -> add joinRequestEUI : fedcba1234567890
-20:19:56.878 -> S: 20
-20:19:56.878 -> joinRequestEUI : fedcba1234567890
-20:19:56.878 -> Accepte
-20:19:56.878 -> mcu>at+set_config=lorap2p:transfer_mode:2
-20:19:56.878 -> rak>OK 
-
-20:19:56.878 -> mcu>at+send=lorap2p:20102021fedcba1234567890
-20:19:57.019 -> rak>OK 
-
-20:19:57.019 -> mcu>at+set_config=lorap2p:transfer_mode:1
-20:19:57.019 -> rak>OK 
-
-20:19:57.019 -> S: 21
-20:19:57.019 -> S: 21
-20:19:57.066 -> S: 21
-20:19:57.112 -> S: 21
-20:19:57.112 -> at+recv=-17,7,4:10202022
-20:19:57.112 -> Decode > addrRe, addrSe, netAddr, frameT 
-20:19:57.112 -> 16, 32, 32, 34
-20:19:57.112 -> add node addr : 32
-20:19:57.112 -> S: 22
-20:19:57.112 -> mcu>at+set_config=lorap2p:transfer_mode:2
-20:19:57.112 -> rak>ERROR: 95
-
-20:19:57.112 -> rak>OK 
-
-20:19:57.112 -> mcu>at+send=lorap2p:20102023
-20:19:57.206 -> rak>OK 
-
-20:19:57.206 -> mcu>at+set_config=lorap2p:transfer_mode:1
-20:19:57.253 -> rak>OK 
-
-20:19:57.253 -> S: 2
-20:19:57.253 -> S: 3
-20:19:57.253 -> mcu>at+set_config=lorap2p:transfer_mode:2
-20:19:57.253 -> rak>OK 
-
-20:19:57.253 -> mcu>at+send=lorap2p:20102002
-20:19:57.300 -> rak>OK 
-
-20:19:57.300 -> mcu>at+set_config=lorap2p:transfer_mode:1
-20:19:57.300 -> rak>OK 
-
-20:19:57.300 -> S: 4
-20:19:57.347 -> S: 4
-20:19:57.394 -> S: 4
-20:19:57.394 -> S: 4
-20:19:57.441 -> S: 4
-20:19:57.441 -> at+recv=-20,8,8:10202004FF02D5EB
-20:19:57.441 -> Decode > addrRe, addrSe, netAddr, frameT, batt, moisture, temperature
-20:19:57.441 -> 16, 32, 32, 4, 255, 45, 1515
-20:19:57.441 -> S: 5
-20:19:57.441 -> mcu>at+set_config=lorap2p:transfer_mode:2
-20:19:57.441 -> rak>OK 
-
-20:19:57.441 -> mcu>at+send=lorap2p:20102005
-20:19:57.534 -> rak>OK 
-
-20:19:57.534 -> mcu>at+set_config=lorap2p:transfer_mode:1
-20:19:57.534 -> rak>OK 
-
-20:19:57.534 -> S: 4
-20:19:57.581 -> S: 4
-20:19:57.581 -> S: 4
-20:19:57.628 -> S: 4
-20:19:57.628 -> S: 4
-20:19:57.628 -> receive data
-20:19:57.628 -> node address : 0
-20:19:57.628 -> success : OK
-20:19:57.628 -> node_batt        : 255
-20:19:57.675 -> node_moisture    : 45
-20:19:57.675 -> node_temperature : 1515
-20:19:57.675 -> S: 2
-20:19:57.675 -> endOfpolling
-20:19:57.675 -> 
-20:19:57.675 -> New loop > timeStamp_loop : 96640
-20:19:57.675 -> S: 2
-20:19:57.675 -> S: 3
-20:19:57.675 -> mcu>at+set_config=lorap2p:transfer_mode:2
-20:19:57.675 -> rak>OK 
-
-20:19:57.675 -> mcu>at+send=lorap2p:20102002
-20:19:57.769 -> rak>OK 
-
-20:19:57.769 -> mcu>at+set_config=lorap2p:transfer_mode:1
-20:19:57.769 -> rak>OK 
-
-20:19:57.769 -> S: 4
-20:19:57.816 -> S: 4
-20:19:57.816 -> S: 4
-20:19:57.862 -> S: 4
-20:19:57.862 -> S: 4
-20:19:57.862 -> at+recv=-21,8,8:10202004FF5CF3D4
-20:19:57.909 -> Decode > addrRe, addrSe, netAddr, frameT, batt, moisture, temperature
-20:19:57.909 -> 16, 32, 32, 4, 255, 1487, 980
-20:19:57.909 -> S: 5
-20:19:57.909 -> mcu>at+set_config=lorap2p:transfer_mode:2
-20:19:57.909 -> rak>OK 
-
-20:19:57.909 -> mcu>at+send=lorap2p:20102005
-20:19:58.003 -> rak>OK 
-
-20:19:58.003 -> mcu>at+set_config=lorap2p:transfer_mode:1
-20:19:58.003 -> rak>OK 
-
-20:19:58.003 -> S: 4
-20:19:58.050 -> S: 4
-20:19:58.050 -> S: 4
-20:19:58.097 -> S: 4
-20:19:58.144 -> S: 4
-20:19:58.144 -> receive data
-20:19:58.144 -> node address : 0
-20:19:58.144 -> success : OK
-20:19:58.144 -> node_batt        : 255
-20:19:58.144 -> node_moisture    : 1487
-20:19:58.144 -> node_temperature : 980
-20:19:58.144 -> S: 2
-20:19:58.144 -> endOfpolling
-20:20:04.453 -> at+recv=-20,7,12:FF050A20ABCDEF0987654321
-20:20:04.453 -> abcdef0987654321
-20:20:04.453 -> Decode > addrRe, addrSe, netAddr, frameT 
-20:20:04.453 -> 255, 5, 10, 32
-20:20:04.453 -> add joinRequestEUI : abcdef0987654321
-20:20:04.453 -> S: 20
-20:20:04.453 -> joinRequestEUI : abcdef0987654321
-20:20:04.453 -> Accepte
-20:20:04.453 -> mcu>at+set_config=lorap2p:transfer_mode:2
-20:20:04.453 -> rak>OK 
-
-20:20:04.453 -> mcu>at+send=lorap2p:21102021abcdef0987654321
-20:20:04.593 -> rak>OK 
-
-20:20:04.593 -> mcu>at+set_config=lorap2p:transfer_mode:1
-20:20:04.593 -> rak>OK 
-
-20:20:04.593 -> S: 21
-20:20:04.593 -> S: 21
-20:20:04.639 -> S: 21
-20:20:04.686 -> S: 21
-20:20:04.686 -> at+recv=-17,7,4:10212022
-20:20:04.686 -> Decode > addrRe, addrSe, netAddr, frameT 
-20:20:04.686 -> 16, 33, 32, 34
-20:20:04.686 -> add node addr : 33
-20:20:04.686 -> S: 22
-20:20:04.686 -> mcu>at+set_config=lorap2p:transfer_mode:2
-20:20:04.686 -> rak>OK 
-
-20:20:04.686 -> mcu>at+send=lorap2p:21102023
-20:20:04.780 -> rak>OK 
-
-20:20:04.780 -> mcu>at+set_config=lorap2p:transfer_mode:1
-20:20:04.780 -> rak>OK 
-
-20:20:04.780 -> S: 2
-20:20:04.780 -> S: 3
-20:20:04.780 -> mcu>at+set_config=lorap2p:transfer_mode:2
-20:20:04.780 -> rak>OK 
-
-20:20:04.780 -> mcu>at+send=lorap2p:20102002
-20:20:04.867 -> rak>OK 
-
-20:20:04.867 -> mcu>at+set_config=lorap2p:transfer_mode:1
-20:20:04.914 -> rak>OK 
-
-20:20:04.914 -> S: 4
-20:20:04.914 -> S: 4
-20:20:04.953 -> S: 4
-20:20:04.953 -> S: 4
-20:20:04.990 -> S: 4
-20:20:05.037 -> at+recv=-21,8,8:10202004FF6597CA
-20:20:05.037 -> Decode > addrRe, addrSe, netAddr, frameT, batt, moisture, temperature
-20:20:05.037 -> 16, 32, 32, 4, 255, 1625, 1994
-20:20:05.037 -> S: 5
-20:20:05.037 -> mcu>at+set_config=lorap2p:transfer_mode:2
-20:20:05.037 -> rak>OK 
-
-20:20:05.037 -> mcu>at+send=lorap2p:20102005
-20:20:05.131 -> rak>OK 
-
-20:20:05.131 -> mcu>at+set_config=lorap2p:transfer_mode:1
-20:20:05.131 -> rak>OK 
-
-20:20:05.131 -> S: 4
-20:20:05.131 -> S: 4
-20:20:05.175 -> S: 4
-20:20:05.222 -> S: 4
-20:20:05.222 -> S: 4
-20:20:05.222 -> receive data
-20:20:05.222 -> node address : 0
-20:20:05.222 -> success : OK
-20:20:05.222 -> node_batt        : 255
-20:20:05.222 -> node_moisture    : 1625
-20:20:05.222 -> node_temperature : 1994
-20:20:05.222 -> S: 2
-20:20:05.222 -> S: 3
-20:20:05.222 -> mcu>at+set_config=lorap2p:transfer_mode:2
-20:20:05.222 -> rak>OK 
-
-20:20:05.222 -> mcu>at+send=lorap2p:21102002
-20:20:05.315 -> rak>OK 
-
-20:20:05.315 -> mcu>at+set_config=lorap2p:transfer_mode:1
-20:20:05.315 -> rak>OK 
-
-20:20:05.315 -> S: 4
-20:20:05.361 -> S: 4
-20:20:05.361 -> S: 4
-20:20:05.408 -> S: 4
-20:20:05.408 -> S: 4
-20:20:05.408 -> at+recv=-20,7,8:10212004FF17B4F4
-20:20:05.453 -> Decode > addrRe, addrSe, netAddr, frameT, batt, moisture, temperature
-20:20:05.453 -> 16, 33, 32, 4, 255, 379, 1268
-20:20:05.453 -> S: 5
-20:20:05.453 -> mcu>at+set_config=lorap2p:transfer_mode:2
-20:20:05.453 -> rak>OK 
-
-20:20:05.453 -> mcu>at+send=lorap2p:21102005
-20:20:05.549 -> rak>OK 
-
-20:20:05.549 -> mcu>at+set_config=lorap2p:transfer_mode:1
-20:20:05.549 -> rak>OK 
-
-20:20:05.549 -> S: 4
-20:20:05.596 -> S: 4
-20:20:05.596 -> S: 4
-20:20:05.642 -> S: 4
-20:20:05.689 -> S: 4
-20:20:05.689 -> receive data
-20:20:05.689 -> node address : 1
-20:20:05.689 -> success : OK
-20:20:05.689 -> node_batt        : 255
-20:20:05.689 -> node_moisture    : 379
-20:20:05.689 -> node_temperature : 1268
-20:20:05.689 -> S: 2
-20:20:05.689 -> endOfpolling
-20:20:05.689 -> 
-20:20:05.689 -> New loop > timeStamp_loop : 104651
-20:20:05.689 -> S: 2
-20:20:05.689 -> S: 3
-20:20:05.689 -> mcu>at+set_config=lorap2p:transfer_mode:2
-20:20:05.689 -> rak>OK 
-
-20:20:05.689 -> mcu>at+send=lorap2p:20102002
-20:20:05.779 -> rak>OK 
-
-20:20:05.779 -> mcu>at+set_config=lorap2p:transfer_mode:1
-20:20:05.779 -> rak>OK 
-
-20:20:05.779 -> S: 4
-20:20:05.826 -> S: 4
-20:20:05.826 -> S: 4
-20:20:05.872 -> S: 4
-20:20:05.911 -> S: 4
-20:20:05.911 -> at+recv=-23,8,8:10202004FF75B796
-20:20:05.911 -> Decode > addrRe, addrSe, netAddr, frameT, batt, moisture, temperature
-20:20:05.911 -> 16, 32, 32, 4, 255, 1883, 1942
-20:20:05.911 -> S: 5
-20:20:05.911 -> mcu>at+set_config=lorap2p:transfer_mode:2
-20:20:05.911 -> rak>OK 
-
-20:20:05.911 -> mcu>at+send=lorap2p:20102005
-20:20:06.001 -> rak>OK 
-
-20:20:06.001 -> mcu>at+set_config=lorap2p:transfer_mode:1
-20:20:06.001 -> rak>OK 
-
-20:20:06.001 -> S: 4
-20:20:06.047 -> S: 4
-20:20:06.087 -> S: 4
-20:20:06.087 -> S: 4
-20:20:06.134 -> S: 4
-20:20:06.134 -> receive data
-20:20:06.134 -> node address : 0
-20:20:06.134 -> success : OK
-20:20:06.134 -> node_batt        : 255
-20:20:06.134 -> node_moisture    : 1883
-20:20:06.134 -> node_temperature : 1942
-20:20:06.134 -> S: 2
-20:20:06.134 -> S: 3
-20:20:06.134 -> mcu>at+set_config=lorap2p:transfer_mode:2
-20:20:06.134 -> rak>OK 
-
-20:20:06.134 -> mcu>at+send=lorap2p:21102002
-20:20:06.228 -> rak>OK 
-
-20:20:06.228 -> mcu>at+set_config=lorap2p:transfer_mode:1
-20:20:06.228 -> rak>OK 
-
-20:20:06.228 -> S: 4
-20:20:06.269 -> S: 4
-20:20:06.269 -> S: 4
-20:20:06.315 -> S: 4
-20:20:06.315 -> S: 4
-20:20:06.315 -> at+recv=-20,8,8:10212004FF7585BF
-20:20:06.362 -> Decode > addrRe, addrSe, netAddr, frameT, batt, moisture, temperature
-20:20:06.362 -> 16, 33, 32, 4, 255, 1880, 1471
-20:20:06.362 -> S: 5
-20:20:06.362 -> mcu>at+set_config=lorap2p:transfer_mode:2
-20:20:06.362 -> rak>OK 
-
-20:20:06.362 -> mcu>at+send=lorap2p:21102005
-20:20:06.454 -> rak>OK 
-
-20:20:06.454 -> mcu>at+set_config=lorap2p:transfer_mode:1
-20:20:06.454 -> rak>OK 
-
-20:20:06.454 -> S: 4
-20:20:06.454 -> S: 4
-20:20:06.501 -> S: 4
-20:20:06.543 -> S: 4
-20:20:06.543 -> S: 4
-20:20:06.543 -> receive data
-20:20:06.543 -> node address : 1
-20:20:06.543 -> success : OK
-20:20:06.543 -> node_batt        : 255
-20:20:06.590 -> node_moisture    : 1880
-20:20:06.590 -> node_temperature : 1471
-20:20:06.590 -> S: 2
-20:20:06.590 -> endOfpolling
-20:20:13.657 -> 
-20:20:13.657 -> New loop > timeStamp_loop : 112656
-20:20:13.704 -> S: 2
-20:20:13.704 -> S: 3
-20:20:13.704 -> mcu>at+set_config=lorap2p:transfer_mode:2
-20:20:13.704 -> rak>OK 
-
-20:20:13.704 -> mcu>at+send=lorap2p:20102002
-20:20:13.797 -> rak>OK 
-
-20:20:13.797 -> mcu>at+set_config=lorap2p:transfer_mode:1
-20:20:13.797 -> rak>OK 
-
-20:20:13.797 -> S: 4
-20:20:13.844 -> S: 4
-20:20:13.844 -> S: 4
-20:20:13.891 -> S: 4
-20:20:13.938 -> S: 4
-20:20:13.938 -> at+recv=-23,8,8:10202004FF344212
-20:20:13.938 -> Decode > addrRe, addrSe, netAddr, frameT, batt, moisture, temperature
-20:20:13.938 -> 16, 32, 32, 4, 255, 836, 530
-20:20:13.938 -> S: 5
-20:20:13.938 -> mcu>at+set_config=lorap2p:transfer_mode:2
-20:20:13.938 -> rak>OK 
-
-20:20:13.938 -> mcu>at+send=lorap2p:20102005
-20:20:14.032 -> rak>OK 
-
-20:20:14.032 -> mcu>at+set_config=lorap2p:transfer_mode:1
-20:20:14.032 -> rak>OK 
-
-20:20:14.032 -> S: 4
-20:20:14.032 -> S: 4
-20:20:14.079 -> S: 4
-20:20:14.126 -> S: 4
-20:20:14.126 -> S: 4
-20:20:14.126 -> receive data
-20:20:14.126 -> node address : 0
-20:20:14.126 -> success : OK
-20:20:14.126 -> node_batt        : 255
-20:20:14.126 -> node_moisture    : 836
-20:20:14.126 -> node_temperature : 530
-20:20:14.126 -> S: 2
-20:20:14.126 -> S: 3
-20:20:14.126 -> mcu>at+set_config=lorap2p:transfer_mode:2
-20:20:14.126 -> rak>OK 
-
-20:20:14.126 -> mcu>at+send=lorap2p:21102002
-20:20:14.219 -> rak>OK 
-
-20:20:14.219 -> mcu>at+set_config=lorap2p:transfer_mode:1
-20:20:14.219 -> rak>OK 
-
-20:20:14.219 -> S: 4
-20:20:14.266 -> S: 4
-20:20:14.266 -> S: 4
-20:20:14.313 -> S: 4
-20:20:14.313 -> S: 4
-20:20:14.313 -> at+recv=-20,7,8:10212004FF5E1095
-20:20:14.360 -> Decode > addrRe, addrSe, netAddr, frameT, batt, moisture, temperature
-20:20:14.360 -> 16, 33, 32, 4, 255, 1505, 149
-20:20:14.360 -> S: 5
-20:20:14.360 -> mcu>at+set_config=lorap2p:transfer_mode:2
-20:20:14.360 -> rak>OK 
-
-20:20:14.360 -> mcu>at+send=lorap2p:21102005
-20:20:14.454 -> rak>OK 
-
-20:20:14.454 -> mcu>at+set_config=lorap2p:transfer_mode:1
-20:20:14.454 -> rak>OK 
-
-20:20:14.454 -> S: 4
-20:20:14.501 -> S: 4
-20:20:14.501 -> S: 4
-20:20:14.547 -> S: 4
-20:20:14.594 -> S: 4
-20:20:14.594 -> receive data
-20:20:14.594 -> node address : 1
-20:20:14.594 -> success : OK
-20:20:14.594 -> node_batt        : 255
-20:20:14.594 -> node_moisture    : 1505
-20:20:14.594 -> node_temperature : 149
-20:20:14.594 -> S: 2
-20:20:14.594 -> endOfpolling
-20:20:21.676 -> 
-20:20:21.676 -> New loop > timeStamp_loop : 120657
-20:20:21.676 -> S: 2
-20:20:21.676 -> S: 3
-20:20:21.676 -> mcu>at+set_config=lorap2p:transfer_mode:2
-20:20:21.723 -> rak>OK 
-
-20:20:21.723 -> mcu>at+send=lorap2p:20102002
-20:20:21.770 -> rak>OK 
-
-20:20:21.770 -> mcu>at+set_config=lorap2p:transfer_mode:1
-20:20:21.770 -> rak>OK 
-
-20:20:21.770 -> S: 4
-20:20:21.817 -> S: 4
-20:20:21.864 -> S: 4
-20:20:21.864 -> S: 4
-20:20:21.911 -> S: 4
-20:20:21.911 -> at+recv=-21,8,8:10202004FF534729
-20:20:21.911 -> Decode > addrRe, addrSe, netAddr, frameT, batt, moisture, temperature
-20:20:21.911 -> 16, 32, 32, 4, 255, 1332, 1833
-20:20:21.911 -> S: 5
-20:20:21.911 -> mcu>at+set_config=lorap2p:transfer_mode:2
-20:20:21.911 -> rak>OK 
-
-20:20:21.911 -> mcu>at+send=lorap2p:20102005
-20:20:22.004 -> rak>OK 
-
-20:20:22.004 -> mcu>at+set_config=lorap2p:transfer_mode:1
-20:20:22.004 -> rak>OK 
-
-20:20:22.004 -> S: 4
-20:20:22.051 -> S: 4
-20:20:22.051 -> S: 4
-20:20:22.098 -> S: 4
-20:20:22.098 -> S: 4
-20:20:22.098 -> receive data
-20:20:22.098 -> node address : 0
-20:20:22.098 -> success : OK
-20:20:22.098 -> node_batt        : 255
-20:20:22.145 -> node_moisture    : 1332
-20:20:22.145 -> node_temperature : 1833
-20:20:22.145 -> S: 2
-20:20:22.145 -> S: 3
-20:20:22.145 -> mcu>at+set_config=lorap2p:transfer_mode:2
-20:20:22.145 -> rak>OK 
-
-20:20:22.145 -> mcu>at+send=lorap2p:21102002
-20:20:22.239 -> rak>OK 
-
-20:20:22.239 -> mcu>at+set_config=lorap2p:transfer_mode:1
-20:20:22.239 -> rak>OK 
-
-20:20:22.239 -> S: 4
-20:20:22.239 -> S: 4
-20:20:22.286 -> S: 4
-20:20:22.333 -> S: 4
-20:20:22.333 -> S: 4
-20:20:22.333 -> at+recv=-23,8,8:10212004FF5F5485
-20:20:22.379 -> Decode > addrRe, addrSe, netAddr, frameT, batt, moisture, temperature
-20:20:22.379 -> 16, 33, 32, 4, 255, 1525, 1157
-20:20:22.379 -> S: 5
-20:20:22.379 -> mcu>at+set_config=lorap2p:transfer_mode:2
-20:20:22.379 -> rak>OK 
-
-20:20:22.379 -> mcu>at+send=lorap2p:21102005
-20:20:22.473 -> rak>OK 
-
-20:20:22.473 -> mcu>at+set_config=lorap2p:transfer_mode:1
-20:20:22.473 -> rak>OK 
-
-20:20:22.473 -> S: 4
-20:20:22.473 -> S: 4
-20:20:22.520 -> S: 4
-20:20:22.520 -> S: 4
-20:20:22.567 -> S: 4
-20:20:22.567 -> receive data
-20:20:22.567 -> node address : 1
-20:20:22.567 -> success : OK
-20:20:22.567 -> node_batt        : 255
-20:20:22.567 -> node_moisture    : 1525
-20:20:22.567 -> node_temperature : 1157
-20:20:22.567 -> S: 2
-20:20:22.567 -> endOfpolling
+00:15:29.101 -> module initialÞ⸮⸮5R⸮select_master
+00:15:29.976 -> acktimeOut : 197
+00:15:29.976 -> CH_Sweep_timeOut : 9009
+00:15:29.976 -> netAddr_negotiate_timeOut : 5742
+00:15:29.976 -> Start Config RAK4200...
+00:15:29.976 -> mcu>at+set_config=lora:work_mode:1
+00:15:30.023 -> rak>LoRa (R) is a registered trademark or service mark of Semtech Corporation or its affiliates. LoRaWAN (R) is a licensed mark.
+
+00:15:30.023 -> rak>
+
+00:15:30.023 -> rak>RAK4200 version:3.2.0.15
+
+00:15:30.023 -> rak>UART1 work mode: RUI_UART_NORMAL, 115200, N81
+
+00:15:30.023 -> rak>UART2 work mode: RUI_UART_NORMAL, 115200, N81
+
+00:15:30.023 -> rak>Current work_mode:P2P
+
+00:15:30.023 -> rak>LoRa P2P Transfer_mode: Receiver
+
+00:15:30.023 -> rak>Initialization OK
+
+00:15:30.023 -> set Work Mode P2P
+00:15:30.023 -> Init LoRaP2P parameters
+00:15:30.023 -> mcu>at+set_config=lorap2p:920200000:8:0:4:8:11
+00:15:30.257 -> mcu>at+set_config=lorap2p:transfer_mode:1
+00:15:30.257 -> rak>OK 
+
+00:15:30.257 -> RECEIVER Mode
+00:15:30.257 -> set Interval
+00:15:30.257 -> T_Interval : 8000
+00:15:30.257 -> set waitforJoin
+00:15:30.257 -> T_waitforJoin : 20000
+00:15:30.257 -> S: 30
+00:15:30.257 -> CH_Sweeping : 0
+00:15:30.257 -> mcu>at+set_config=lorap2p:transfer_mode:2
+00:15:30.257 -> rak>OK 
+
+00:15:30.257 -> mcu>at+send=lorap2p:ff010110
+00:15:30.351 -> rak>OK 
+
+00:15:30.351 -> mcu>at+set_config=lorap2p:transfer_mode:1
+00:15:30.351 -> rak>OK 
+
+00:15:36.116 -> S: 30
+00:15:36.116 -> CH_Sweeping : 1
+00:15:36.116 -> mcu>at+set_config=lorap2p:920400000:8:0:4:8:11
+00:15:36.351 -> OK
+00:15:36.351 -> mcu>at+set_config=lorap2p:transfer_mode:2
+00:15:36.632 -> rak>OK 
+
+00:15:36.632 -> mcu>at+send=lorap2p:ff010110
+00:15:36.679 -> rak>OK 
+
+00:15:36.679 -> mcu>at+set_config=lorap2p:transfer_mode:1
+00:15:36.726 -> rak>OK 
+
+00:15:42.444 -> S: 30
+00:15:42.444 -> CH_Sweeping : 2
+00:15:42.444 -> mcu>at+set_config=lorap2p:920600000:8:0:4:8:11
+00:15:42.725 -> OK
+00:15:42.725 -> mcu>at+set_config=lorap2p:transfer_mode:2
+00:15:42.960 -> rak>OK 
+
+00:15:42.960 -> mcu>at+send=lorap2p:ff010110
+00:15:43.052 -> rak>OK 
+
+00:15:43.052 -> mcu>at+set_config=lorap2p:transfer_mode:1
+00:15:43.052 -> rak>OK 
+
+00:15:48.817 -> S: 30
+00:15:48.817 -> CH_Sweeping : 3
+00:15:48.817 -> mcu>at+set_config=lorap2p:920800000:8:0:4:8:11
+00:15:49.051 -> OK
+00:15:49.051 -> mcu>at+set_config=lorap2p:transfer_mode:2
+00:15:49.332 -> rak>OK 
+
+00:15:49.332 -> mcu>at+send=lorap2p:ff010110
+00:15:49.426 -> rak>OK 
+
+00:15:49.426 -> mcu>at+set_config=lorap2p:transfer_mode:1
+00:15:49.426 -> rak>OK 
+
+00:15:55.144 -> S: 30
+00:15:55.144 -> CH_Sweeping : 4
+00:15:55.144 -> mcu>at+set_config=lorap2p:921000000:8:0:4:8:11
+00:15:55.426 -> OK
+00:15:55.426 -> mcu>at+set_config=lorap2p:transfer_mode:2
+00:15:55.660 -> rak>OK 
+
+00:15:55.660 -> mcu>at+send=lorap2p:ff010110
+00:15:55.754 -> rak>OK 
+
+00:15:55.754 -> mcu>at+set_config=lorap2p:transfer_mode:1
+00:15:55.754 -> rak>OK 
+
+00:16:01.519 -> S: 30
+00:16:01.519 -> CH_Sweeping : 5
+00:16:01.519 -> mcu>at+set_config=lorap2p:921200000:8:0:4:8:11
+00:16:01.800 -> OK
+00:16:01.800 -> mcu>at+set_config=lorap2p:transfer_mode:2
+00:16:02.035 -> rak>OK 
+
+00:16:02.035 -> mcu>at+send=lorap2p:ff010110
+00:16:02.128 -> rak>OK 
+
+00:16:02.128 -> mcu>at+set_config=lorap2p:transfer_mode:1
+00:16:02.128 -> rak>OK 
+
+00:16:07.893 -> S: 30
+00:16:07.893 -> CH_Sweeping : 6
+00:16:07.893 -> mcu>at+set_config=lorap2p:921400000:8:0:4:8:11
+00:16:08.128 -> OK
+00:16:08.128 -> mcu>at+set_config=lorap2p:transfer_mode:2
+00:16:08.409 -> rak>OK 
+
+00:16:08.409 -> mcu>at+send=lorap2p:ff010110
+00:16:08.456 -> rak>OK 
+
+00:16:08.456 -> mcu>at+set_config=lorap2p:transfer_mode:1
+00:16:08.503 -> rak>OK 
+
+00:16:14.221 -> S: 30
+00:16:14.221 -> CH_Sweeping : 7
+00:16:14.221 -> mcu>at+set_config=lorap2p:921600000:8:0:4:8:11
+00:16:14.502 -> OK
+00:16:14.502 -> mcu>at+set_config=lorap2p:transfer_mode:2
+00:16:14.737 -> rak>OK 
+
+00:16:14.737 -> mcu>at+send=lorap2p:ff010110
+00:16:14.830 -> rak>OK 
+
+00:16:14.830 -> mcu>at+set_config=lorap2p:transfer_mode:1
+00:16:14.830 -> rak>OK 
+
+00:16:20.596 -> S: 30
+00:16:20.596 -> CH_Sweeping : 8
+00:16:20.596 -> mcu>at+set_config=lorap2p:921800000:8:0:4:8:11
+00:16:20.830 -> OK
+00:16:20.830 -> mcu>at+set_config=lorap2p:transfer_mode:2
+00:16:21.111 -> rak>OK 
+
+00:16:21.111 -> mcu>at+send=lorap2p:ff010110
+00:16:21.158 -> rak>OK 
+
+00:16:21.158 -> mcu>at+set_config=lorap2p:transfer_mode:1
+00:16:21.205 -> rak>OK 
+
+00:16:26.923 -> S: 30
+00:16:26.923 -> CH_Sweeping : 9
+00:16:26.923 -> mcu>at+set_config=lorap2p:922000000:8:0:4:8:11
+00:16:27.205 -> OK
+00:16:27.205 -> mcu>at+set_config=lorap2p:transfer_mode:2
+00:16:27.439 -> rak>OK 
+
+00:16:27.439 -> mcu>at+send=lorap2p:ff010110
+00:16:27.533 -> rak>OK 
+
+00:16:27.533 -> mcu>at+set_config=lorap2p:transfer_mode:1
+00:16:27.533 -> rak>OK 
+
+00:16:33.298 -> S: 30
+00:16:33.298 -> CH_Sweeping : 10
+00:16:33.298 -> mcu>at+set_config=lorap2p:922200000:8:0:4:8:11
+00:16:33.532 -> OK
+00:16:33.532 -> mcu>at+set_config=lorap2p:transfer_mode:2
+00:16:33.814 -> rak>OK 
+
+00:16:33.814 -> mcu>at+send=lorap2p:ff010110
+00:16:33.907 -> rak>OK 
+
+00:16:33.907 -> mcu>at+set_config=lorap2p:transfer_mode:1
+00:16:33.907 -> rak>OK 
+
+00:16:39.626 -> S: 30
+00:16:39.626 -> CH_Sweeping : 11
+00:16:39.626 -> mcu>at+set_config=lorap2p:922400000:8:0:4:8:11
+00:16:39.907 -> OK
+00:16:39.907 -> mcu>at+set_config=lorap2p:transfer_mode:2
+00:16:40.141 -> rak>OK 
+
+00:16:40.141 -> mcu>at+send=lorap2p:ff010110
+00:16:40.235 -> rak>OK 
+
+00:16:40.235 -> mcu>at+set_config=lorap2p:transfer_mode:1
+00:16:40.235 -> rak>OK 
+
+00:16:46.000 -> S: 30
+00:16:46.000 -> CH_Sweeping : 12
+00:16:46.000 -> mcu>at+set_config=lorap2p:922600000:8:0:4:8:11
+00:16:46.281 -> OK
+00:16:46.281 -> mcu>at+set_config=lorap2p:transfer_mode:2
+00:16:46.516 -> rak>OK 
+
+00:16:46.516 -> mcu>at+send=lorap2p:ff010110
+00:16:46.609 -> rak>OK 
+
+00:16:46.609 -> mcu>at+set_config=lorap2p:transfer_mode:1
+00:16:46.609 -> rak>OK 
+
+00:16:52.375 -> S: 30
+00:16:52.375 -> CH_Sweeping : 13
+00:16:52.375 -> mcu>at+set_config=lorap2p:922800000:8:0:4:8:11
+00:16:52.609 -> OK
+00:16:52.609 -> mcu>at+set_config=lorap2p:transfer_mode:2
+00:16:52.890 -> rak>OK 
+
+00:16:52.890 -> mcu>at+send=lorap2p:ff010110
+00:16:52.937 -> rak>OK 
+
+00:16:52.937 -> mcu>at+set_config=lorap2p:transfer_mode:1
+00:16:52.984 -> rak>OK 
+
+00:16:58.700 -> S: 30
+00:16:58.700 -> S: 32
+00:16:58.700 -> mcu>at+set_config=lorap2p:920200000:8:0:4:8:11
+00:16:58.981 -> OK
+00:16:58.981 -> mcu>at+set_config=lorap2p:transfer_mode:2
+00:16:59.215 -> rak>OK 
+
+00:16:59.215 -> mcu>at+send=lorap2p:ff032013
+00:16:59.309 -> rak>OK 
+
+00:16:59.309 -> mcu>at+set_config=lorap2p:transfer_mode:1
+00:16:59.309 -> rak>OK 
+
+00:17:05.074 -> Success netAddr : 32
+00:17:05.074 -> Start wait : 20000
+00:17:09.642 -> at+recv=-34,8,12:FF050A20FEDCBA1234567890
+00:17:09.642 -> fedcba1234567890
+00:17:09.642 -> Decode > addrRe, addrSe, netAddr, frameT 
+00:17:09.642 -> 255, 5, 10, 32
+00:17:09.642 -> add joinRequestEUI : fedcba1234567890
+00:17:09.642 -> S: 20
+00:17:09.642 -> joinRequestEUI : fedcba1234567890
+00:17:09.642 -> Accept
+00:17:09.642 -> mcu>at+set_config=lorap2p:transfer_mode:2
+00:17:09.642 -> rak>OK 
+
+00:17:09.642 -> mcu>at+send=lorap2p:20102021fedcba1234567890
+00:17:09.736 -> rak>OK 
+
+00:17:09.736 -> mcu>at+set_config=lorap2p:transfer_mode:1
+00:17:09.783 -> rak>OK 
+
+00:17:09.783 -> S: 21
+00:17:09.783 -> S: 21
+00:17:09.830 -> S: 21
+00:17:09.830 -> S: 21
+00:17:09.877 -> at+recv=-40,8,4:10202022
+00:17:09.877 -> Decode > addrRe, addrSe, netAddr, frameT 
+00:17:09.877 -> 16, 32, 32, 34
+00:17:09.877 -> add node addr : 32
+00:17:09.877 -> S: 22
+00:17:09.877 -> mcu>at+set_config=lorap2p:transfer_mode:2
+00:17:09.877 -> rak>OK 
+
+00:17:09.877 -> mcu>at+send=lorap2p:20102023
+00:17:09.971 -> rak>OK 
+
+00:17:09.971 -> mcu>at+set_config=lorap2p:transfer_mode:1
+00:17:09.971 -> rak>OK 
+
+00:17:20.114 -> at+recv=-41,8,12:FF050A20ABCDEF0987654321
+00:17:20.114 -> abcdef0987654321
+00:17:20.114 -> Decode > addrRe, addrSe, netAddr, frameT 
+00:17:20.114 -> 255, 5, 10, 32
+00:17:20.114 -> add joinRequestEUI : abcdef0987654321
+00:17:20.114 -> S: 20
+00:17:20.114 -> joinRequestEUI : abcdef0987654321
+00:17:20.114 -> Accept
+00:17:20.114 -> mcu>at+set_config=lorap2p:transfer_mode:2
+00:17:20.114 -> rak>OK 
+
+00:17:20.114 -> mcu>at+send=lorap2p:21102021abcdef0987654321
+00:17:20.207 -> rak>OK 
+
+00:17:20.207 -> mcu>at+set_config=lorap2p:transfer_mode:1
+00:17:20.254 -> rak>OK 
+
+00:17:20.254 -> S: 21
+00:17:20.254 -> S: 21
+00:17:20.301 -> S: 21
+00:17:20.301 -> S: 21
+00:17:20.348 -> at+recv=-46,7,4:10212022
+00:17:20.348 -> Decode > addrRe, addrSe, netAddr, frameT 
+00:17:20.395 -> 16, 33, 32, 34
+00:17:20.395 -> add node addr : 33
+00:17:20.395 -> S: 22
+00:17:20.395 -> mcu>at+set_config=lorap2p:transfer_mode:2
+00:17:20.395 -> rak>OK 
+
+00:17:20.395 -> mcu>at+send=lorap2p:21102023
+00:17:20.442 -> rak>OK 
+
+00:17:20.442 -> mcu>at+set_config=lorap2p:transfer_mode:1
+00:17:20.442 -> rak>OK 
+
+00:17:25.058 -> wait end
+00:17:25.058 -> 
+00:17:25.058 -> New loop > timeStamp_loop : 116012
+00:17:25.105 -> S: 2
+00:17:25.105 -> S: 3
+00:17:25.105 -> mcu>at+set_config=lorap2p:transfer_mode:2
+00:17:25.105 -> rak>OK 
+
+00:17:25.105 -> mcu>at+send=lorap2p:20102002
+00:17:25.198 -> rak>OK 
+
+00:17:25.198 -> mcu>at+set_config=lorap2p:transfer_mode:1
+00:17:25.198 -> rak>OK 
+
+00:17:25.198 -> S: 4
+00:17:25.247 -> S: 4
+00:17:25.247 -> S: 4
+00:17:25.293 -> S: 4
+00:17:25.339 -> S: 4
+00:17:25.339 -> at+recv=-31,8,8:10202004FF2B1312
+00:17:25.339 -> Decode > addrRe, addrSe, netAddr, frameT, batt, moisture, temperature
+00:17:25.339 -> 16, 32, 32, 4, 255, 689, 786
+00:17:25.339 -> S: 5
+00:17:25.339 -> mcu>at+set_config=lorap2p:transfer_mode:2
+00:17:25.339 -> rak>OK 
+
+00:17:25.339 -> mcu>at+send=lorap2p:20102005
+00:17:25.433 -> rak>OK 
+
+00:17:25.433 -> mcu>at+set_config=lorap2p:transfer_mode:1
+00:17:25.433 -> rak>OK 
+
+00:17:25.433 -> S: 4
+00:17:25.476 -> S: 4
+00:17:25.476 -> S: 4
+00:17:25.522 -> S: 4
+00:17:25.522 -> receive data
+00:17:25.522 -> node address : 0
+00:17:25.522 -> success : OK
+00:17:25.522 -> node_batt        : 255
+00:17:25.522 -> node_moisture    : 689
+00:17:25.522 -> node_temperature : 786
+00:17:25.522 -> S: 2
+00:17:25.522 -> S: 3
+00:17:25.522 -> mcu>at+set_config=lorap2p:transfer_mode:2
+00:17:25.522 -> rak>OK 
+
+00:17:25.522 -> mcu>at+send=lorap2p:21102002
+00:17:25.615 -> rak>OK 
+
+00:17:25.615 -> mcu>at+set_config=lorap2p:transfer_mode:1
+00:17:25.615 -> rak>OK 
+
+00:17:25.615 -> S: 4
+00:17:25.662 -> S: 4
+00:17:25.708 -> S: 4
+00:17:25.708 -> S: 4
+00:17:25.755 -> S: 4
+00:17:25.755 -> at+recv=-42,8,8:10212004FF77509C
+00:17:25.755 -> Decode > addrRe, addrSe, netAddr, frameT, batt, moisture, temperature
+00:17:25.755 -> 16, 33, 32, 4, 255, 1909, 156
+00:17:25.755 -> S: 5
+00:17:25.755 -> mcu>at+set_config=lorap2p:transfer_mode:2
+00:17:25.755 -> rak>OK 
+
+00:17:25.755 -> mcu>at+send=lorap2p:21102005
+00:17:25.839 -> rak>OK 
+
+00:17:25.839 -> mcu>at+set_config=lorap2p:transfer_mode:1
+00:17:25.886 -> rak>OK 
+
+00:17:25.886 -> S: 4
+00:17:25.886 -> S: 4
+00:17:25.933 -> S: 4
+00:17:25.980 -> S: 4
+00:17:25.980 -> receive data
+00:17:25.980 -> node address : 1
+00:17:25.980 -> success : OK
+00:17:25.980 -> node_batt        : 255
+00:17:25.980 -> node_moisture    : 1909
+00:17:25.980 -> node_temperature : 156
+00:17:25.980 -> S: 2
+00:17:25.980 -> endOfpolling
+00:17:33.086 -> 
+00:17:33.086 -> New loop > timeStamp_loop : 124019
+00:17:33.133 -> S: 2
+00:17:33.133 -> S: 3
+00:17:33.133 -> mcu>at+set_config=lorap2p:transfer_mode:2
+00:17:33.133 -> rak>OK 
+
+00:17:33.133 -> mcu>at+send=lorap2p:20102002
+00:17:33.227 -> rak>OK 
+
+00:17:33.227 -> mcu>at+set_config=lorap2p:transfer_mode:1
+00:17:33.227 -> rak>OK 
+
+00:17:33.227 -> S: 4
+00:17:33.227 -> S: 4
+00:17:33.274 -> S: 4
+00:17:33.321 -> S: 4
+00:17:33.321 -> at+recv=-30,8,8:10202004FF5FA603
+00:17:33.321 -> Decode > addrRe, addrSe, netAddr, frameT, batt, moisture, temperature
+00:17:33.367 -> 16, 32, 32, 4, 255, 1530, 1539
+00:17:33.367 -> S: 5
+00:17:33.367 -> mcu>at+set_config=lorap2p:transfer_mode:2
+00:17:33.367 -> rak>OK 
+
+00:17:33.367 -> mcu>at+send=lorap2p:20102005
+00:17:33.415 -> rak>OK 
+
+00:17:33.415 -> mcu>at+set_config=lorap2p:transfer_mode:1
+00:17:33.462 -> rak>OK 
+
+00:17:33.462 -> S: 4
+00:17:33.462 -> S: 4
+00:17:33.509 -> S: 4
+00:17:33.509 -> S: 4
+00:17:33.509 -> receive data
+00:17:33.509 -> node address : 0
+00:17:33.556 -> success : OK
+00:17:33.556 -> node_batt        : 255
+00:17:33.556 -> node_moisture    : 1530
+00:17:33.556 -> node_temperature : 1539
+00:17:33.556 -> S: 2
+00:17:33.556 -> S: 3
+00:17:33.556 -> mcu>at+set_config=lorap2p:transfer_mode:2
+00:17:33.556 -> rak>OK 
+
+00:17:33.556 -> mcu>at+send=lorap2p:21102002
+00:17:33.650 -> rak>OK 
+
+00:17:33.650 -> mcu>at+set_config=lorap2p:transfer_mode:1
+00:17:33.650 -> rak>OK 
+
+00:17:33.650 -> S: 4
+00:17:33.697 -> S: 4
+00:17:33.697 -> S: 4
+00:17:33.743 -> S: 4
+00:17:33.790 -> S: 4
+00:17:33.790 -> at+recv=-42,8,8:10212004FF1FA10D
+00:17:33.790 -> Decode > addrRe, addrSe, netAddr, frameT, batt, moisture, temperature
+00:17:33.790 -> 16, 33, 32, 4, 255, 506, 269
+00:17:33.790 -> S: 5
+00:17:33.790 -> mcu>at+set_config=lorap2p:transfer_mode:2
+00:17:33.790 -> rak>OK 
+
+00:17:33.790 -> mcu>at+send=lorap2p:21102005
+00:17:33.837 -> rak>OK 
+
+00:17:33.837 -> mcu>at+set_config=lorap2p:transfer_mode:1
+00:17:33.884 -> rak>OK 
+
+00:17:33.884 -> S: 4
+00:17:33.884 -> S: 4
+00:17:33.931 -> S: 4
+00:17:33.978 -> S: 4
+00:17:33.978 -> receive data
+00:17:33.978 -> node address : 1
+00:17:33.978 -> success : OK
+00:17:33.978 -> node_batt        : 255
+00:17:33.978 -> node_moisture    : 506
+00:17:33.978 -> node_temperature : 269
+00:17:33.978 -> S: 2
+00:17:33.978 -> endOfpolling
