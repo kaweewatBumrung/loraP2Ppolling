@@ -1,0 +1,19 @@
+00:17:09.002 -> ets Jun  8 2016 00:22:57
+00:17:09.002 -> 
+00:17:09.002 -> rst:0x1 (POWERON_RESET),boot:0x13 (SPI_FAST_FLASH_BOOT)
+00:17:09.002 -> configsip: 0, SPIWP:0xee
+00:17:09.002 -> clk_drv:0x00,q_drv:0x00,d_drv:0x00,cs0_drv:0x00,hd_drv:0x00,wp_drv:0x00
+00:17:09.002 -> mode:DIO, clock div:1
+00:17:09.002 -> load:0x3fff0030,len:1420
+00:17:09.002 -> ho 0 tail 12 room 4
+00:17:09.002 -> load:0x40078000,len:13540
+00:17:09.002 -> load:0x40080400,len:3604
+00:17:09.049 -> entry 0x400805f0
+00:17:09.142 -> module initiala⸮^YC⸮BºJ⸮⸮Ʌ⸮⸮ PSRAM ID read error: 0xffffffff
+00:17:09.142 -> select_node
+00:17:09.142 -> acktimeOut : 197
+00:17:09.142 -> CH_Sweep_timeOut : 9009
+00:17:09.142 -> netAddr_negotiate_timeOut : 5742
+00:17:09.142 -> Start Config RAK4200...
+00:17:09.189 -> mcu>at+set_config=lora:work_mode:1
+00:17:09.236 -> rak>

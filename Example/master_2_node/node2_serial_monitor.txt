@@ -1,0 +1,124 @@
+00:17:19.610 -> module initiala⸮⸮YC⸮B⸮⸮J⸮⸮Ʌ⸮⸮ PSRAM ID read error: 0xffffffff
+00:17:19.650 -> select_node
+00:17:19.650 -> acktimeOut : 197
+00:17:19.650 -> CH_Sweep_timeOut : 9009
+00:17:19.650 -> netAddr_negotiate_timeOut : 5742
+00:17:19.650 -> Start Config RAK4200...
+00:17:19.650 -> mcu>at+set_config=lora:work_mode:1
+00:17:19.690 -> rak>LoRa (R) is a registered trademark or service mark of Semtech Corporation or its affiliates. LoRaWAN (R) is a licensed mark.
+
+00:17:19.690 -> rak>
+
+00:17:19.690 -> rak>RAK4200 version:3.2.0.15
+
+00:17:19.737 -> rak>UART1 work mode: RUI_UART_NORMAL, 115200, N81
+
+00:17:19.737 -> rak>UART2 work mode: RUI_UART_NORMAL, 115200, N81
+
+00:17:19.737 -> rak>Current work_mode:P2P
+
+00:17:19.737 -> rak>LoRa P2P Transfer_mode: Receiver
+
+00:17:19.737 -> rak>Initialization OK
+
+00:17:19.737 -> set Work Mode P2P
+00:17:19.737 -> Init LoRaP2P parameters
+00:17:19.737 -> mcu>at+set_config=lorap2p:920200000:8:0:4:8:11
+00:17:19.926 -> mcu>at+set_config=lorap2p:transfer_mode:1
+00:17:19.926 -> rak>OK 
+
+00:17:19.926 -> RECEIVER Mode
+00:17:19.926 -> S: 20
+00:17:19.926 -> CH_Sweeping : 0
+00:17:19.926 -> mcu>at+set_config=lorap2p:transfer_mode:2
+00:17:19.973 -> rak>OK 
+
+00:17:19.973 -> mcu>at+send=lorap2p:ff050a20abcdef0987654321
+00:17:20.067 -> rak>OK 
+
+00:17:20.067 -> mcu>at+set_config=lorap2p:transfer_mode:1
+00:17:20.067 -> rak>OK 
+
+00:17:20.207 -> at+recv=-38,8,12:21102021ABCDEF0987654321
+00:17:20.207 -> abcdef0987654321
+00:17:20.254 -> Decode > addrRe, addrSe, netAddr, frameT 
+00:17:20.254 -> 33, 16, 32, 33
+00:17:20.254 -> mcu>at+set_config=lorap2p:transfer_mode:2
+00:17:20.254 -> rak>OK 
+
+00:17:20.254 -> mcu>at+send=lorap2p:10212022
+00:17:20.348 -> rak>OK 
+
+00:17:20.348 -> mcu>at+set_config=lorap2p:transfer_mode:1
+00:17:20.348 -> rak>OK 
+
+00:17:20.442 -> at+recv=-43,8,4:21102023
+00:17:20.442 -> Decode > addrRe, addrSe, netAddr, frameT 
+00:17:20.442 -> 33, 16, 32, 35
+00:17:20.442 -> Joined
+00:17:25.198 -> at+recv=-44,8,4:20102002
+00:17:25.198 -> Decode > addrRe, addrSe, netAddr, frameT 
+00:17:25.198 -> 32, 16, 32, 2
+00:17:25.198 -> addrReceiver not match
+00:17:25.293 -> at+recv=-18,8,8:10202004FF2B1312
+00:17:25.339 -> Decode > addrRe, addrSe, netAddr, frameT 
+00:17:25.339 -> 16, 32, 32, 4
+00:17:25.339 -> addrReceiver not match
+00:17:25.432 -> at+recv=-44,8,4:20102005
+00:17:25.432 -> Decode > addrRe, addrSe, netAddr, frameT 
+00:17:25.432 -> 32, 16, 32, 5
+00:17:25.432 -> addrReceiver not match
+00:17:25.615 -> at+recv=-43,7,4:21102002
+00:17:25.615 -> Decode > addrRe, addrSe, netAddr, frameT 
+00:17:25.615 -> 33, 16, 32, 2
+00:17:25.615 -> S: 3
+00:17:25.615 -> mcu>at+set_config=lorap2p:transfer_mode:2
+00:17:25.615 -> rak>OK 
+
+00:17:25.615 -> mcu>at+send=lorap2p:10212004ff77509c
+00:17:25.755 -> rak>OK 
+
+00:17:25.755 -> mcu>at+set_config=lorap2p:transfer_mode:1
+00:17:25.755 -> rak>OK 
+
+00:17:25.755 -> S: 4
+00:17:25.755 -> S: 4
+00:17:25.792 -> S: 4
+00:17:25.839 -> S: 4
+00:17:25.839 -> at+recv=-43,7,4:21102005
+00:17:25.839 -> Decode > addrRe, addrSe, netAddr, frameT 
+00:17:25.839 -> 33, 16, 32, 5, 0, 15, 0
+00:17:25.839 -> receive ACK
+00:17:33.180 -> at+recv=-43,8,4:20102002
+00:17:33.227 -> Decode > addrRe, addrSe, netAddr, frameT 
+00:17:33.227 -> 32, 16, 32, 2
+00:17:33.227 -> addrReceiver not match
+00:17:33.321 -> at+recv=-18,7,8:10202004FF5FA603
+00:17:33.321 -> Decode > addrRe, addrSe, netAddr, frameT 
+00:17:33.321 -> 16, 32, 32, 4
+00:17:33.321 -> addrReceiver not match
+00:17:33.415 -> at+recv=-44,7,4:20102005
+00:17:33.415 -> Decode > addrRe, addrSe, netAddr, frameT 
+00:17:33.415 -> 32, 16, 32, 5
+00:17:33.415 -> addrReceiver not match
+00:17:33.650 -> at+recv=-43,7,4:21102002
+00:17:33.650 -> Decode > addrRe, addrSe, netAddr, frameT 
+00:17:33.650 -> 33, 16, 32, 2
+00:17:33.650 -> S: 3
+00:17:33.650 -> mcu>at+set_config=lorap2p:transfer_mode:2
+00:17:33.650 -> rak>OK 
+
+00:17:33.650 -> mcu>at+send=lorap2p:10212004ff1fa10d
+00:17:33.743 -> rak>OK 
+
+00:17:33.743 -> mcu>at+set_config=lorap2p:transfer_mode:1
+00:17:33.743 -> rak>OK 
+
+00:17:33.743 -> S: 4
+00:17:33.790 -> S: 4
+00:17:33.790 -> S: 4
+00:17:33.837 -> S: 4
+00:17:33.837 -> at+recv=-43,8,4:21102005
+00:17:33.837 -> Decode > addrRe, addrSe, netAddr, frameT 
+00:17:33.884 -> 33, 16, 32, 5, 0, 15, 0
+00:17:33.884 -> receive ACK

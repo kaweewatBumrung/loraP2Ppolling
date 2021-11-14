@@ -1,5 +1,5 @@
 /*
-  write by: kaweewat bumrung
+  Author: kaweewat bumrung
   13/11/2021 dd/mm/yyyy
   loraP2Ppolling library version 1.1.0
 */
@@ -36,7 +36,8 @@ const uint64_t      test_EUI_2 = 0xABCDEF0987654321;  // 16 digits HEX
 // P2PpollingClass (int lora_rx_pin, int lora_tx_pin, int lora_reset_pin);
 P2PpollingClass P2Ppolling(RAK4200_RX, RAK4200_TX, RAK4200_RES);
 
-void setup() {
+void setup() 
+{
   // Must call this before setXXX, FSM_polling
   // select master or node, with acknowledgement or without
   // and set SF, power_dBm
@@ -56,6 +57,7 @@ void setup() {
 */
   
   // set interval (ms), if not set default to 10s (for master)
+  // minimum = acktimeOut
   P2Ppolling.setPolling_interval(8000);
 
   // set wait for Join duration (for master)
@@ -64,26 +66,17 @@ void setup() {
   P2Ppolling.set_T_waitforJoin(20000);
 }
 
-int areRemove = 0;
-//int testnum;
-
-void loop() {
+void loop() 
+{
   // you have to make loop run as quick as possible
 
   // will call finite state machine of selected type (master or node)
   P2Ppolling.FSM_polling();
-
-  // test remove node at 140s (run once)
-  if ((millis() >= 140000) && (areRemove == 0)) {
-    Serial.print("at 140s node remove");
-    P2Ppolling.nodeRemove(0xFEDCBA1234567890);
-    areRemove = 1;
-  }
 }
 
 /*
   for read node data you can use 
-  e.g. P2Ppolling.getBatt(P2Ppolling.EUI_toAddr(this_node_EUI));
+  e.g. P2Ppolling.getBatt(P2Ppolling.EUI_toAddr(EUI));
   and use it in other part of your program
 */
 
